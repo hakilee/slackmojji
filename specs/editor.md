@@ -110,6 +110,8 @@ Owner: GitHub issue #1. Editing/rendering stays in the browser. Only explicitly 
 
 ## Public gallery — E6 (#128)
 
+- E6f (#217): Cache successful content-addressed image GETs in the Workers Cache API and advertise one-year immutable browser caching. Canonicalize cache keys to origin/path, ignoring query variants; stream R2 image bodies. Cache failure must not prevent origin image delivery. Do not cache absent assets, mutable lists or counted download POSTs, and do not change counters on preview hits/misses. Future asset removal must purge edge caches and account for immutable browser copies. Evaluate WebP/settings alternatives in research before changing the publication format or source-data boundary.
+
 - E6e (#208): Label the download-count sort tab “랭킹” instead of “가장 많이 다운로드”; preserve the popular sort value, download-count ordering, tab accessibility, pagination reset and API behavior.
 
 - E6b (#153): Gallery sorting tabs omit the rectangular focus outline. Preserve the active underline, native focusability and arrow-key tab navigation; other controls retain their focus styling.

@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { encode } from "modern-gif";
-import { describe, expect, onTestFinished, test } from "vitest";
+import { Miniflare } from "miniflare";
+import { describe, expect, onTestFinished, test, vi } from "vitest";
 import { getPlatformProxy } from "wrangler";
 import worker from "./worker";
 
@@ -15,6 +16,7 @@ describe("public gallery API [E6]", () => {
       const response = await worker.fetch(
         new Request(`https://${host}/api/mochi?sort=popular`, { method: "POST" }),
         platform.env,
+        platform.ctx,
       );
       expect(response.status).toBe(308);
       expect(response.headers.get("Cache-Control")).toBe("no-store");
@@ -58,6 +60,7 @@ describe("public gallery API [E6]", () => {
         body: gif,
       }),
       platform.env,
+      platform.ctx,
     );
     expect(published.status).toBe(201);
     expect(await platform.env.DB.prepare("SELECT filename FROM mochi").first("filename")).toBe(
@@ -73,17 +76,72 @@ describe("public gallery API [E6]", () => {
             body: gif,
           }),
           platform.env,
+          platform.ctx,
         )
       ).status,
     ).toBe(201);
     expect(
       await platform.env.DB.prepare("SELECT count(*) AS total FROM mochi").first("total"),
     ).toBe(1);
+    const runtime = new Miniflare({
+      workers: [
+        {
+          config: {
+            name: "cache",
+            compatibilityDate: "2026-11-03",
+            cache: { enabled: true },
+            manifest: {
+              mainModule: "index.js",
+              modules: {
+                "index.js": {
+                  type: "esm",
+                  contents: "export default { fetch() { return new Response('ok'); } }",
+                },
+              },
+            },
+          },
+        },
+      ],
+    });
+    onTestFinished(() => runtime.dispose());
+    const runtimeCaches = await runtime.getCaches();
+    vi.stubGlobal("caches", runtimeCaches);
+    onTestFinished(() => {
+      vi.unstubAllGlobals();
+    });
     const preview = await worker.fetch(
       new Request(`https://example.test/api/mochi/${id}/image`),
       platform.env,
+      platform.ctx,
     );
     expect(new Uint8Array(await preview.arrayBuffer())).toEqual(new Uint8Array(gif));
+    expect(preview.headers.get("Cache-Control")).toBe("public, max-age=31536000, immutable");
+    const cache = await runtimeCaches.open("mochi-images");
+    await expect
+      .poll(async () => !!(await cache.match(`https://example.test/api/mochi/${id}/image`)))
+      .toBe(true);
+    await platform.env.MOCHI.delete(`${id}.gif`);
+    const cached = await worker.fetch(
+      new Request(`https://example.test/api/mochi/${id}/image?ignored=variant`),
+      platform.env,
+      platform.ctx,
+    );
+    expect(new Uint8Array(await cached.arrayBuffer())).toEqual(new Uint8Array(gif));
+    await platform.env.MOCHI.put(`${id}.gif`, gif);
+    vi.stubGlobal("caches", { open: vi.fn().mockRejectedValue(new Error("cache unavailable")) });
+    const uncached = await worker.fetch(
+      new Request(`https://example.test/api/mochi/${id}/image`),
+      platform.env,
+      platform.ctx,
+    );
+    expect(uncached.status).toBe(200);
+    expect(new Uint8Array(await uncached.arrayBuffer())).toEqual(new Uint8Array(gif));
+    vi.stubGlobal("caches", runtimeCaches);
+    const missingUrl = `https://example.test/api/mochi/${"f".repeat(64)}/image`;
+    expect((await worker.fetch(new Request(missingUrl), platform.env, platform.ctx)).status).toBe(
+      404,
+    );
+    expect(await cache.match(missingUrl)).toBeUndefined();
     expect(
       await platform.env.DB.prepare("SELECT downloads FROM mochi WHERE id = ?")
         .bind(id)
@@ -97,6 +155,7 @@ describe("public gallery API [E6]", () => {
             headers: { Origin: "https://example.test" },
           }),
           platform.env,
+          platform.ctx,
         ),
       ),
     );
@@ -104,6 +163,7 @@ describe("public gallery API [E6]", () => {
       downloads.every(
         (response) =>
           response.status === 200 &&
+          response.headers.get("Cache-Control") === "no-store" &&
           response.headers.get("Content-Disposition") ===
             "attachment; filename=\"slackmojji.gif\"; filename*=UTF-8''%EC%8A%AC%EB%9E%99%20%EB%AA%A8%EC%B0%8C%20%28%E2%99%A1%29.gif",
       ),
@@ -122,19 +182,28 @@ describe("public gallery API [E6]", () => {
       ),
     );
     const recent = (await (
-      await worker.fetch(new Request("https://example.test/api/mochi"), platform.env)
+      await worker.fetch(new Request("https://example.test/api/mochi"), platform.env, platform.ctx)
     ).json()) as { items: { id: string }[]; nextOffset: number };
     expect(recent.items).toHaveLength(24);
+    expect(await cache.match("https://example.test/api/mochi")).toBeUndefined();
     expect(recent.nextOffset).toBe(24);
     const popular = (await (
-      await worker.fetch(new Request("https://example.test/api/mochi?sort=popular"), platform.env)
+      await worker.fetch(
+        new Request("https://example.test/api/mochi?sort=popular"),
+        platform.env,
+        platform.ctx,
+      )
     ).json()) as { items: { id: string; filename: string }[] };
     expect(popular.items[0].id).toBe(id);
     expect(popular.items[0].filename).toBe("슬랙 모찌 (♡).gif");
     expect(
       (
         (await (
-          await worker.fetch(new Request("https://example.test/api/mochi?offset=24"), platform.env)
+          await worker.fetch(
+            new Request("https://example.test/api/mochi?offset=24"),
+            platform.env,
+            platform.ctx,
+          )
         ).json()) as { items: unknown[] }
       ).items,
     ).toHaveLength(2);
@@ -147,6 +216,7 @@ describe("public gallery API [E6]", () => {
             headers: { Origin: "https://example.test" },
           }),
           platform.env,
+          platform.ctx,
         )
       ).status,
     ).toBe(404);
@@ -173,6 +243,7 @@ describe("public gallery API [E6]", () => {
           body,
         }),
         platform.env,
+        platform.ctx,
       );
       expect(response.status).toBe(status);
     }
@@ -187,6 +258,7 @@ describe("public gallery API [E6]", () => {
         body: new Uint8Array(1),
       }),
       platform.env,
+      platform.ctx,
     );
     expect(invalidName.status).toBe(400);
     expect((await platform.env.MOCHI.list()).objects).toHaveLength(0);

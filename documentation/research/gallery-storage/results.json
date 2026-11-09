@@ -1,0 +1,70 @@
+{
+  "runtime": "v26.13.0",
+  "renderer": "@napi-rs/canvas (native)",
+  "samples": "3 encodes, 60 warm 24-canvas batches; excludes font transfer/browser paint",
+  "results": [
+    {
+      "name": "static",
+      "layers": 1,
+      "motion": "none",
+      "jsonBytes": 306,
+      "gzipJsonBytes": 237,
+      "gifBytes": 2049,
+      "losslessWebpBytes": 910,
+      "gifEncodeMedianMs": 8.42,
+      "draw24MedianMs": 0.97,
+      "draw24P95Ms": 1.27,
+      "inputFrames": 1,
+      "outputFrames": 1,
+      "inputDurationMs": 60
+    },
+    {
+      "name": "single",
+      "layers": 1,
+      "motion": "bounce",
+      "jsonBytes": 308,
+      "gzipJsonBytes": 239,
+      "gifBytes": 25531,
+      "losslessWebpBytes": 17824,
+      "gifEncodeMedianMs": 30.65,
+      "draw24MedianMs": 0.93,
+      "draw24P95Ms": 2.88,
+      "inputFrames": 20,
+      "outputFrames": 20,
+      "inputDurationMs": 1200,
+      "outputDurationMs": 1200
+    },
+    {
+      "name": "four-layers",
+      "layers": 4,
+      "motion": "jelly",
+      "jsonBytes": 775,
+      "gzipJsonBytes": 298,
+      "gifBytes": 20856,
+      "losslessWebpBytes": 18498,
+      "gifEncodeMedianMs": 28.89,
+      "draw24MedianMs": 4.48,
+      "draw24P95Ms": 6.82,
+      "inputFrames": 20,
+      "outputFrames": 20,
+      "inputDurationMs": 1200,
+      "outputDurationMs": 1200
+    },
+    {
+      "name": "twelve-layers",
+      "layers": 12,
+      "motion": "roll",
+      "jsonBytes": 1981,
+      "gzipJsonBytes": 391,
+      "gifBytes": 70634,
+      "losslessWebpBytes": 50302,
+      "gifEncodeMedianMs": 52.9,
+      "draw24MedianMs": 13.25,
+      "draw24P95Ms": 23.03,
+      "inputFrames": 20,
+      "outputFrames": 20,
+      "inputDurationMs": 1200,
+      "outputDurationMs": 1200
+    }
+  ]
+}
