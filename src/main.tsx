@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createRootRoute, createRoute, createRouter, RouterProvider } from "@tanstack/react-router";
-import "@fontsource/noto-sans-kr/400.css";
+import "pretendard/dist/web/static/Pretendard-Regular.css";
 import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 import "@fontsource/black-han-sans";
 import "@fontsource/jua";
