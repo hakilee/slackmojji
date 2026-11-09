@@ -417,7 +417,7 @@ describe("emoji editor [E1 E2 E3 E4]", () => {
 
       const blob = await exportGif(ctx, {
         ...initialSettings,
-        layers: [{ ...initialTextLayer, text, font: "Noto Sans KR" }],
+        layers: [{ ...initialTextLayer, text, font: "Pretendard" }],
       });
       const decoded = decode(await blob.arrayBuffer());
       const frames = decodeFrames(await blob.arrayBuffer());
