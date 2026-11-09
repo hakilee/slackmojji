@@ -1,4 +1,4 @@
-import type { D1Database, R2Bucket, RateLimit } from "@cloudflare/workers-types";
+import type { D1Database, ExecutionContext, R2Bucket, RateLimit } from "@cloudflare/workers-types";
 import { formatDownloadFilename } from "../lib/download-filename";
 import { validateGif } from "./validate-gif";
 
@@ -11,7 +11,11 @@ interface Env {
 }
 
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
+  async fetch(
+    request: Request,
+    env: Env,
+    context: Pick<ExecutionContext, "waitUntil">,
+  ): Promise<Response> {
     const url = new URL(request.url);
     if (["slackmoji.haklee.me", "mojji.haklee.me"].includes(url.hostname)) {
       url.protocol = "https:";
@@ -54,19 +58,25 @@ export default {
         /^\/api\/mochi\/(?<id>[a-f0-9]{64})\/(?<action>image|download)$/,
       );
       if (match?.groups && request.method === "GET" && match.groups.action === "image") {
+        const cache = await caches.open("mochi-images").catch(() => undefined);
+        const cacheKey = new Request(new URL(url.pathname, url.origin));
+        const cached = await cache?.match(cacheKey).catch(() => undefined);
+        if (cached) return cached;
         const exists = await env.DB.prepare("SELECT id FROM mochi WHERE id = ?")
           .bind(match.groups.id)
           .first();
         if (!exists) return error("모찌를 찾을 수 없어요.", 404);
         const object = await env.MOCHI.get(`${match.groups.id}.gif`);
         if (!object) return error("모찌를 찾을 수 없어요.", 404);
-        return new Response(await object.arrayBuffer(), {
+        const response = new Response(object.body as unknown as ReadableStream<Uint8Array>, {
           headers: {
             "Content-Type": "image/gif",
-            "Cache-Control": "public, max-age=86400",
+            "Cache-Control": "public, max-age=31536000, immutable",
             "X-Content-Type-Options": "nosniff",
           },
         });
+        if (cache) context.waitUntil(cache.put(cacheKey, response.clone()).catch(() => {}));
+        return response;
       }
       if (request.method !== "POST") return error("지원하지 않는 요청이에요.", 404);
       if (request.headers.get("Origin") !== url.origin)
