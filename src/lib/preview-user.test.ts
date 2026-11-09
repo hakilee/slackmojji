@@ -27,11 +27,24 @@ describe("preview author lifecycle [E5br]", () => {
     expect(reloaded.avatar).toMatch(/^\/preview-avatars\/[a-z-]+-light\.svg$/);
   });
 
-  test("supports the final name and avatar choices", async () => {
-    vi.spyOn(Math, "random").mockReturnValue(0.999999);
+  test.each([
+    [0, "Gene (진)", "triple-lens"],
+    [1, "Izy (이지)", "pearl-leaves"],
+    [2, "Rubato (루바토)", "tri-axial-weave"],
+    [3, "Loopy (루피)", "braided-disc"],
+    [4, "Everett (에버렛)", "crossed-petals"],
+    [5, "Orra (오라)", "five-lobe-vortex"],
+    [6, "Coke (코크)", "six-tile-halo"],
+    [7, "Cola (콜라)", "pillow-braid"],
+    [8, "Ria (리아)", "four-lens-orbit"],
+    [9, "Crong (크롱)", "five-cushions"],
+    [10, "Chloe (클로이)", "five-capsule-star"],
+    [11, "Hailey (헤일리)", "leaf-crown"],
+  ] as const)("keeps profile %i mapped to %s", async (index, name, avatar) => {
+    vi.spyOn(Math, "random").mockReturnValue((index + 0.5) / 12);
     expect((await import("./preview-user")).previewUser).toEqual({
-      name: "Cola (콜라)",
-      avatar: "/preview-avatars/leaf-crown-light.svg",
+      name,
+      avatar: `/preview-avatars/${avatar}-light.svg`,
     });
   });
 

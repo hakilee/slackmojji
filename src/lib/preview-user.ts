@@ -1,28 +1,18 @@
 // Initialize once per page load, not on editor renders or React StrictMode remounts.
 export const previewUser = (() => {
-  const names = [
-    "Gene (진)",
-    "Izy (이지)",
-    "Rubato (루바토)",
-    "Loopy (루피)",
-    "Everett (에버렛)",
-    "Orra (오라)",
-    "Coke (코크)",
-    "Cola (콜라)",
-  ];
-  const avatars = [
-    "triple-lens",
-    "pearl-leaves",
-    "tri-axial-weave",
-    "braided-disc",
-    "crossed-petals",
-    "five-lobe-vortex",
-    "six-tile-halo",
-    "pillow-braid",
-    "four-lens-orbit",
-    "five-cushions",
-    "five-capsule-star",
-    "leaf-crown",
+  const profiles = [
+    { name: "Gene (진)", avatar: "triple-lens" },
+    { name: "Izy (이지)", avatar: "pearl-leaves" },
+    { name: "Rubato (루바토)", avatar: "tri-axial-weave" },
+    { name: "Loopy (루피)", avatar: "braided-disc" },
+    { name: "Everett (에버렛)", avatar: "crossed-petals" },
+    { name: "Orra (오라)", avatar: "five-lobe-vortex" },
+    { name: "Coke (코크)", avatar: "six-tile-halo" },
+    { name: "Cola (콜라)", avatar: "pillow-braid" },
+    { name: "Ria (리아)", avatar: "four-lens-orbit" },
+    { name: "Crong (크롱)", avatar: "five-cushions" },
+    { name: "Chloe (클로이)", avatar: "five-capsule-star" },
+    { name: "Hailey (헤일리)", avatar: "leaf-crown" },
   ];
   let previous: string | null = null;
   try {
@@ -30,12 +20,10 @@ export const previewUser = (() => {
   } catch {
     // Storage can be unavailable; the preview still works with a random identity.
   }
-  const availableNames = names.filter((name) => name !== previous?.split("|").at(0));
-  const availableAvatars = avatars.filter((avatar) => avatar !== previous?.split("|").at(1));
-  const name = availableNames[Math.floor(Math.random() * availableNames.length)];
-  const avatar = availableAvatars[Math.floor(Math.random() * availableAvatars.length)];
+  const availableProfiles = profiles.filter((profile) => profile.name !== previous);
+  const { name, avatar } = availableProfiles[Math.floor(Math.random() * availableProfiles.length)];
   try {
-    sessionStorage.setItem("slackmojji-preview-user", `${name}|${avatar}`);
+    sessionStorage.setItem("slackmojji-preview-user", name);
   } catch {
     // Persisting the previous choice is optional, never a prerequisite for editing.
   }
