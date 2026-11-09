@@ -8,7 +8,7 @@
     "publicReferenceExports": 53,
     "referenceComponentsAndParts": 103,
     "extensions": 17,
-    "applicationComponents": 8
+    "applicationComponents": 9
   },
   "ports": [
     {
@@ -26,7 +26,7 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 493
+          "line": 502
         }
       ]
     },
@@ -209,19 +209,19 @@
         },
         {
           "file": "src/components/MochiGallery.tsx",
-          "line": 113
+          "line": 147
         },
         {
           "file": "src/components/MochiGallery.tsx",
-          "line": 149
+          "line": 195
         },
         {
           "file": "src/components/MochiGallery.tsx",
-          "line": 163
+          "line": 209
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 724
+          "line": 733
         }
       ]
     },
@@ -516,7 +516,7 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 551
+          "line": 560
         }
       ]
     },
@@ -857,7 +857,7 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 553
+          "line": 562
         }
       ]
     },
@@ -876,7 +876,7 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 570
+          "line": 579
         }
       ]
     },
@@ -903,19 +903,19 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 571
+          "line": 580
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 572
+          "line": 581
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 573
+          "line": 582
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 574
+          "line": 583
         }
       ]
     },
@@ -946,7 +946,7 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 567
+          "line": 576
         }
       ]
     },
@@ -965,7 +965,7 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 568
+          "line": 577
         }
       ]
     },
@@ -1023,11 +1023,15 @@
         },
         {
           "file": "src/components/MochiGallery.tsx",
-          "line": 139
+          "line": 159
+        },
+        {
+          "file": "src/components/MochiGallery.tsx",
+          "line": 185
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 731
+          "line": 740
         }
       ]
     },
@@ -1074,7 +1078,7 @@
       "usages": [
         {
           "file": "src/components/MochiGallery.tsx",
-          "line": 91
+          "line": 125
         }
       ]
     },
@@ -1085,7 +1089,7 @@
       "usages": [
         {
           "file": "src/components/MochiGallery.tsx",
-          "line": 110
+          "line": 144
         }
       ]
     },
@@ -1096,7 +1100,7 @@
       "usages": [
         {
           "file": "src/components/MochiGallery.tsx",
-          "line": 102
+          "line": 136
         }
       ]
     },
@@ -1107,11 +1111,11 @@
       "usages": [
         {
           "file": "src/components/MochiGallery.tsx",
-          "line": 103
+          "line": 137
         },
         {
           "file": "src/components/MochiGallery.tsx",
-          "line": 106
+          "line": 140
         }
       ]
     },
@@ -1241,11 +1245,11 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 501
+          "line": 510
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 587
+          "line": 596
         }
       ]
     },
@@ -1271,7 +1275,7 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 590
+          "line": 599
         }
       ]
     },
@@ -1285,11 +1289,11 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 580
+          "line": 589
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 715
+          "line": 724
         }
       ]
     },
@@ -1315,11 +1319,11 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 531
+          "line": 540
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 539
+          "line": 548
         }
       ]
     },
@@ -1329,7 +1333,7 @@
       "usages": [
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 596
+          "line": 605
         }
       ]
     },
@@ -1351,11 +1355,11 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 513
+          "line": 522
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 608
+          "line": 617
         }
       ]
     },
@@ -1389,7 +1393,7 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 617
+          "line": 626
         }
       ]
     },
@@ -1413,7 +1417,7 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 374
+          "line": 383
         }
       ]
     },
@@ -1423,11 +1427,11 @@
       "usages": [
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 268
+          "line": 277
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 344
+          "line": 353
         }
       ]
     },
@@ -1467,7 +1471,7 @@
       "usages": [
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 668
+          "line": 677
         }
       ]
     },
@@ -1477,11 +1481,11 @@
       "usages": [
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 358
+          "line": 367
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 363
+          "line": 372
         }
       ]
     }
@@ -1608,7 +1612,13 @@
       "file": "src/components/MochiGallery.tsx",
       "components": ["MochiGallery"],
       "designSystem": ["Button", "Spinner", "Tabs", "Tabs.Content", "Tabs.List", "Tabs.Trigger"],
-      "dependencies": ["src/components/design-system/index.ts"]
+      "dependencies": ["src/components/design-system/index.ts", "src/lib/emoji-v1.ts"]
+    },
+    {
+      "file": "src/components/RecipePreview.tsx",
+      "components": ["RecipePreview"],
+      "designSystem": [],
+      "dependencies": ["src/lib/mochi-recipe-client.ts", "src/lib/mochi-recipe.ts"]
     },
     {
       "file": "src/pages/EditorPage.tsx",
@@ -1645,6 +1655,7 @@
         "src/lib/emoji.ts",
         "src/lib/font-loading.ts",
         "src/lib/initial-text-color.ts",
+        "src/lib/mochi-recipe.ts",
         "src/lib/preview-user.ts"
       ]
     }

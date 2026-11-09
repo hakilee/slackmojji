@@ -66,6 +66,17 @@ try {
       frameTimes.push(performance.now() - start);
     }
     frameTimes.sort((a, b) => a - b);
+    const layouts = contexts.map(() => new Map());
+    contexts.forEach((context, index) => drawEmoji(context, settings, 0, layouts[index]));
+    const cachedFrameTimes = [];
+    for (let frame = 0; frame < 60; frame++) {
+      const start = performance.now();
+      contexts.forEach((context, index) =>
+        drawEmoji(context, settings, (frame % 20) / 20, layouts[index]),
+      );
+      cachedFrameTimes.push(performance.now() - start);
+    }
+    cachedFrameTimes.sort((a, b) => a - b);
     encodeTimes.sort((a, b) => a - b);
     results.push({
       name,
@@ -78,6 +89,7 @@ try {
       gifEncodeMedianMs: +encodeTimes[1].toFixed(2),
       draw24MedianMs: +frameTimes[30].toFixed(2),
       draw24P95Ms: +frameTimes[57].toFixed(2),
+      draw24CachedP95Ms: +cachedFrameTimes[57].toFixed(2),
       inputFrames: input.pages ?? 1,
       outputFrames: output.pages ?? 1,
       inputDurationMs: input.delay?.reduce((a, b) => a + b, 0),

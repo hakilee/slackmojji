@@ -4,8 +4,107 @@ import { Miniflare } from "miniflare";
 import { describe, expect, onTestFinished, test, vi } from "vitest";
 import { getPlatformProxy } from "wrangler";
 import worker from "./worker";
+import { createRecipe } from "../lib/mochi-recipe";
+import { initialSettings } from "../lib/emoji-v1";
 
 describe("public gallery API [E6]", () => {
+  test("gates, validates and deduplicates recipes without R2, and isolates counted attempts [E6g]", async () => {
+    const platform = await getPlatformProxy<Parameters<typeof worker.fetch>[1]>({ persist: false });
+    onTestFinished(() => platform.dispose());
+    for (const file of ["0001_gallery.sql", "0002_mochi_filename.sql", "0003_mochi_recipes.sql"]) {
+      await platform.env.DB.batch(
+        (await readFile(`migrations/${file}`, "utf8"))
+          .split(";")
+          .filter((sql) => sql.trim())
+          .map((sql) => platform.env.DB.prepare(sql)),
+      );
+    }
+    const recipe = createRecipe(initialSettings)!;
+    const request = new Request("https://example.test/api/mochi", {
+      method: "POST",
+      headers: { Origin: "https://example.test", "Content-Type": "application/json" },
+      body: JSON.stringify(recipe),
+    });
+    expect((await worker.fetch(request.clone(), platform.env, platform.ctx)).status).toBe(415);
+    const env = { ...platform.env, ENABLE_MOCHI_RECIPES: "true" };
+    const published = await worker.fetch(request.clone(), env, platform.ctx);
+    expect(published.status).toBe(201);
+    const { id } = (await published.json()) as { id: string };
+    const duplicate = await worker.fetch(
+      new Request(request, {
+        method: "POST",
+        body: JSON.stringify(Object.fromEntries(Object.entries(recipe).reverse())),
+      }),
+      env,
+      platform.ctx,
+    );
+    expect(await duplicate.json()).toEqual({ id });
+    expect(await env.DB.prepare("SELECT count(*) AS n FROM mochi").first("n")).toBe(1);
+    expect((await env.MOCHI.list()).objects).toHaveLength(0);
+    const list = await worker.fetch(
+      new Request("https://example.test/api/mochi"),
+      env,
+      platform.ctx,
+    );
+    const data = (await list.json()) as { items: { recipe: unknown; downloads: number }[] };
+    expect(data.items[0].recipe).toEqual(recipe);
+    expect(data.items[0].downloads).toBe(0);
+    expect(
+      (
+        await worker.fetch(
+          new Request(`https://example.test/api/mochi/${id}/download`, {
+            method: "POST",
+            headers: { Origin: "https://example.test" },
+          }),
+          env,
+          platform.ctx,
+        )
+      ).status,
+    ).toBe(404);
+    expect(
+      (
+        await worker.fetch(
+          new Request(`https://example.test/api/mochi/${id}/count`, {
+            method: "POST",
+            headers: { Origin: "https://evil.test" },
+          }),
+          env,
+          platform.ctx,
+        )
+      ).status,
+    ).toBe(403);
+    const countRequest = new Request(`https://example.test/api/mochi/${id}/count`, {
+      method: "POST",
+      headers: { Origin: "https://example.test" },
+    });
+    const counted = await worker.fetch(countRequest.clone(), env, platform.ctx);
+    expect(await counted.json()).toEqual({ downloads: 1 });
+    expect(counted.headers.get("Cache-Control")).toBe("no-store");
+    expect(
+      (
+        await worker.fetch(
+          countRequest.clone(),
+          { ...env, DOWNLOAD_LIMIT: { limit: async () => ({ success: false }) } },
+          platform.ctx,
+        )
+      ).status,
+    ).toBe(429);
+    expect(
+      await env.DB.prepare("SELECT downloads FROM mochi WHERE id=?").bind(id).first("downloads"),
+    ).toBe(1);
+    for (const [body, status] of [
+      [JSON.stringify({ ...recipe, schemaVersion: 2 }), 400],
+      [JSON.stringify({ ...recipe, secret: "unknown" }), 400],
+      [JSON.stringify({ ...recipe, settings: { ...recipe.settings, delay: null } }), 400],
+      ["{".repeat(16385), 413],
+    ] as const) {
+      expect(
+        (await worker.fetch(new Request(request, { method: "POST", body }), env, platform.ctx))
+          .status,
+      ).toBe(status);
+    }
+    expect((await env.MOCHI.list()).objects).toHaveLength(0);
+  }, 20000);
   test.each(["slackmoji.haklee.me", "mojji.haklee.me"])(
     "redirects %s with path and query intact",
     async (host) => {
@@ -43,6 +142,7 @@ describe("public gallery API [E6]", () => {
       ),
     ).toBe("slackmoji.gif");
     await platform.env.DB.prepare("DELETE FROM mochi WHERE id='legacy'").run();
+    await platform.env.DB.exec(await readFile("migrations/0003_mochi_recipes.sql", "utf8"));
     const gif = await encode({
       width: 128,
       height: 128,
