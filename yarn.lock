@@ -2175,60 +2175,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/history@npm:1.162.5":
-  version: 1.162.5
-  resolution: "@tanstack/history@npm:1.162.5"
-  checksum: 10c0/dbd749b0ffc1f02bd0937f3ae039b0e8c8f935d5eaa77b82e86f8d769fdcc1bf01e6253fe73e8597c89e330447a78f5d9599cfeaacf141e2b3ee394f19fa88bf
-  languageName: node
-  linkType: hard
-
-"@tanstack/react-router@npm:^1.170.46":
-  version: 1.170.46
-  resolution: "@tanstack/react-router@npm:1.170.46"
-  dependencies:
-    "@tanstack/history": "npm:1.162.5"
-    "@tanstack/react-store": "npm:^0.11.2"
-    "@tanstack/router-core": "npm:1.171.39"
-    isbot: "npm:^5.1.22"
-  peerDependencies:
-    react: ">=18.0.0 || >=19.0.0"
-    react-dom: ">=18.0.0 || >=19.0.0"
-  checksum: 10c0/3761084b58e3581f5ba22bdd46d87e2808bf0d517790b8826e31b2f036a7b4bbad5f1ee188c1a704b8c87c3c493e141138fdbee9836cb8bea921af4ce078b76f
-  languageName: node
-  linkType: hard
-
-"@tanstack/react-store@npm:^0.11.2":
-  version: 0.11.2
-  resolution: "@tanstack/react-store@npm:0.11.2"
-  dependencies:
-    "@tanstack/store": "npm:0.11.2"
-    use-sync-external-store: "npm:^1.6.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10c0/a755aa369c13824709ca5b29355ab7a72ba913d3561786f993412c8c375f36c54b20c0366bd406cf21b363b12e516a251a774ee7140479571b628e895448a93d
-  languageName: node
-  linkType: hard
-
-"@tanstack/router-core@npm:1.171.39":
-  version: 1.171.39
-  resolution: "@tanstack/router-core@npm:1.171.39"
-  dependencies:
-    "@tanstack/history": "npm:1.162.5"
-    cookie-es: "npm:^3.0.0"
-    seroval: "npm:^1.6.7"
-    seroval-plugins: "npm:^1.6.7"
-  checksum: 10c0/2d67358028175051b3abd486581dd9bf74edced16f43ef5e14065c20b7aa5830f521a52ad43fdaf98dfda76232437260a544b3213f2c86b4f0d2bd0436109c4c
-  languageName: node
-  linkType: hard
-
-"@tanstack/store@npm:0.11.2":
-  version: 0.11.2
-  resolution: "@tanstack/store@npm:0.11.2"
-  checksum: 10c0/5422149c853c16e642a0ddfb51c2b4a867a11516069d3b9647659212e9762b86d609144de6ac6ec099b0360c3b198d1243f613148d69c1028dee56382f0430cd
-  languageName: node
-  linkType: hard
-
 "@tybys/wasm-util@npm:^0.10.2, @tybys/wasm-util@npm:^0.10.3":
   version: 0.10.4
   resolution: "@tybys/wasm-util@npm:0.10.4"
@@ -2528,13 +2474,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookie-es@npm:^3.0.0":
-  version: 3.1.1
-  resolution: "cookie-es@npm:3.1.1"
-  checksum: 10c0/62cf0c325cc547b52477b351e9b5d068b3ffc74f7d143cdf7af854648dd1015fca3aed1498b355365e24b0746333f0b15688ed3a535abecc5ed0a046ae956a84
-  languageName: node
-  linkType: hard
-
 "cookie@npm:^1.0.2":
   version: 1.1.1
   resolution: "cookie@npm:1.1.1"
@@ -2802,13 +2741,6 @@ __metadata:
   bin:
     husky: bin.js
   checksum: 10c0/35bb110a71086c48906aa7cd3ed4913fb913823715359d65e32e0b964cb1e255593b0ae8014a5005c66a68e6fa66c38dcfa8056dbbdfb8b0187c0ffe7ee3a58f
-  languageName: node
-  linkType: hard
-
-"isbot@npm:^5.1.22":
-  version: 5.2.2
-  resolution: "isbot@npm:5.2.2"
-  checksum: 10c0/df8356dd8745d7fe1922fc8df894bf5560fe959ad7826ac97311c430dc9c6dd628c8aab68d3e45769b50b61411bd4530d874aae07947f6cd04e25206566a7bb3
   languageName: node
   linkType: hard
 
@@ -3575,22 +3507,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"seroval-plugins@npm:^1.6.7":
-  version: 1.7.6
-  resolution: "seroval-plugins@npm:1.7.6"
-  peerDependencies:
-    seroval: ^1.0
-  checksum: 10c0/f3acc352c43078c6aef2ed31f457495409e17d3413dd24498a88350905a492ddcf78660806b230abae9b4792a346022517295d40e7cbf2fe20c0e5f61e8dd161
-  languageName: node
-  linkType: hard
-
-"seroval@npm:^1.6.7":
-  version: 1.7.6
-  resolution: "seroval@npm:1.7.6"
-  checksum: 10c0/97110f076f84262783935e60108ae84c80b2d86db1e06d46a6f5f8cf860c571b9f3278c9cabbc327d8369279ebb3ad24f71f1abfa1bad2153866e601bc0b8b0f
-  languageName: node
-  linkType: hard
-
 "sharp@npm:0.35.5":
   version: 0.35.5
   resolution: "sharp@npm:0.35.5"
@@ -3702,7 +3618,6 @@ __metadata:
     "@radix-ui/react-tabs": "npm:^1.1.21"
     "@radix-ui/react-tooltip": "npm:^1.2.16"
     "@tailwindcss/vite": "npm:^4.3.3"
-    "@tanstack/react-router": "npm:^1.170.46"
     "@types/node": "npm:^26.6.6"
     "@types/react": "npm:^19.3.0"
     "@types/react-dom": "npm:^19.3.0"
@@ -4037,15 +3952,6 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 10c0/161599bf921cfaa41c85d2b01c871975ee99260f3e874c2d41c05890d41170297bdcf314bc5185e7a700de2034ac5b888e3efc8e9f35724f4918f53538d717c9
-  languageName: node
-  linkType: hard
-
-"use-sync-external-store@npm:^1.6.0":
-  version: 1.7.0
-  resolution: "use-sync-external-store@npm:1.7.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10c0/6bae7cb778ce611131ec830c4e469fbc2872acefc25d2e4cf1c28b8628690689770742a9f2f0642c95134f9c77041fee60f0352f81ca43f96643b0ed01774726
   languageName: node
   linkType: hard
 
