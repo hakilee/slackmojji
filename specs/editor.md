@@ -1,5 +1,7 @@
 # GIF emoji editor
 
+- E5bv (#223): Offer twelve effect choices, including none, in a four-column/three-row grid on desktop and narrow screens. Add tremble (fast horizontal translation), squash (vertical compression) and float (smooth signed vertical translation), with matching icons and shared canvas/preview/GIF rendering. Preserve the existing nine effect semantics and the fixed v1 public recipe allowlist; new effects publish through the GIF fallback. Verify decoded text/image animation, frame timing, transparency and geometry with existing motion-parameterized tests.
+
 - E2e (#202): Replace the bundled Noto Sans KR preset with Pretendard (400), including emoji/kaomoji insertion and specimens. Reuse the installed self-hosted subset fonts; preserve UI variable typography, other presets, and the Google Fonts catalog.
 
 Owner: GitHub issue #1. Editing/rendering stays in the browser. Public publication sends rendered GIFs or the explicitly disclosed eligible text/settings recipe in the gated E6g pilot; source images, uploaded fonts and history remain local.

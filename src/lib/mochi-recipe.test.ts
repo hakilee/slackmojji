@@ -5,6 +5,16 @@ import { createRecipe, recipeSchema, restoreRecipe } from "./mochi-recipe";
 import { drawEmoji, exportGif, initialSettings, initialTextLayer } from "./emoji-v1";
 
 describe("versioned text recipes [E6g]", () => {
+  test.each(["tremble", "squash", "float"] as const)(
+    "keeps new editor effect %s on the GIF fallback [E5bv]",
+    (motion) => {
+      expect(createRecipe({ ...initialSettings, motion })).toBeNull();
+      const recipe = createRecipe(initialSettings)!;
+      expect(
+        recipeSchema.safeParse({ ...recipe, settings: { ...recipe.settings, motion } }).success,
+      ).toBe(false);
+    },
+  );
   test.each([
     { schemaVersion: 2 },
     { rendererVersion: 2 },

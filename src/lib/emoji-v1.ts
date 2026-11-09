@@ -15,6 +15,9 @@ export const motions = {
   orbit: "둥실둥실",
   swing: "갸우뚱",
   jelly: "말랑말랑",
+  tremble: "덜덜덜",
+  squash: "납작납작",
+  float: "둥둥",
 };
 export type ImageLayer = {
   flipX?: boolean;
@@ -197,6 +200,16 @@ function applyMotion(ctx: CanvasRenderingContext2D, motion: Settings["motion"], 
       break;
     case "jelly":
       ctx.scale(0.88 + Math.sin(phase) * 0.1, 0.88 - Math.sin(phase) * 0.1);
+      break;
+    // Additive editor effects; the public v1 recipe allowlist remains fixed.
+    case "tremble":
+      ctx.translate(Math.sin(phase * 4) * 3, 0);
+      break;
+    case "squash":
+      ctx.scale(1, 1 - Math.sin(phase) ** 2 * 0.35);
+      break;
+    case "float":
+      ctx.translate(0, -Math.sin(phase) * 8);
       break;
   }
 }
