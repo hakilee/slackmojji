@@ -381,8 +381,11 @@ export function EditorPage() {
             <div className="flex min-h-heading-slot items-center gap-1">
               <h2 className="text-body font-semibold">캔버스</h2>
               <HelpBubble label="캔버스 조작">
-                모바일에서는 탭으로 선택한 뒤 다시 드래그해 이동해요. 모서리를 드래그하면 크기를
-                조절해요. Alt를 누르면 자석 정렬이 꺼져요.
+                <ul className="list-disc space-y-1 pl-4">
+                  <li>모바일: 탭으로 선택한 뒤 드래그해 이동해요.</li>
+                  <li>모서리를 드래그해 크기를 조절해요.</li>
+                  <li>Alt를 누르는 동안 자석 정렬이 꺼져요.</li>
+                </ul>
               </HelpBubble>
             </div>
             <CanvasEditor
