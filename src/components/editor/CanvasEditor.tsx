@@ -401,6 +401,7 @@ export function CanvasEditor({
             />
           )}
           {layers.map((layer) => {
+            if (layer.type === "text" && !geometry[layer.id]) return null;
             const id = layer.id;
             return (
               <CanvasHitTarget
@@ -437,7 +438,8 @@ export function CanvasEditor({
         </div>
         {layers.map(
           (layer) =>
-            selectedId === layer.id && (
+            selectedId === layer.id &&
+            (layer.type !== "text" || geometry[layer.id]) && (
               <CanvasResizeHandles
                 key={layer.id}
                 layerId={layer.id}
