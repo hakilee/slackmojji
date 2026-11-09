@@ -2,6 +2,8 @@
 
 Owner: GitHub issue #1. Editing/rendering stays in the browser. Only explicitly published rendered GIFs leave the device; source images, fonts and editable documents remain local.
 
+- E5bq (#204): Keep the focusable font-upload input visually hidden at 1×1px inside its positioned upload-button wrapper. Shared Input sizing must not expand scrollable overflow or scroll the text-layer panel into blank space when focused/activated. Preserve native file selection, keyboard access, focus-within indication, cancellation, validation and loading. Verify panel scroll bounds before/after activation with Aside on desktop/narrow viewports.
+
 - E5bp (#200): Font upload and Google Fonts use an equal two-column action row with icons. Upload uses a button-styled label linked to a focusable visually hidden native file input; preserve loading, disabled state, validation and upload selection.
 
 - E5bo (#198): Transform overflow reset action is labeled “초기화”; behavior remains unchanged.
