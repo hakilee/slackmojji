@@ -150,7 +150,7 @@ export function FontPicker({
         ))}
       </div>
       <div className="mt-inset grid grid-cols-2 gap-control">
-        <div className="min-w-0 rounded-xl focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-primary">
+        <div className="relative min-w-0 rounded-xl focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-primary">
           <Button asChild variant="neutral" disabled={!!loading} className="h-full w-full px-2">
             <FormField.Label htmlFor={uploadId}>
               <ArrowUpIcon aria-hidden="true" className="size-4 shrink-0" />
@@ -159,7 +159,7 @@ export function FontPicker({
           </Button>
           <Input
             id={uploadId}
-            className="sr-only"
+            className="sr-only top-0 left-0 size-px border-0 p-0"
             type="file"
             accept=".otf,.ttf,.woff,.woff2"
             disabled={!!loading}
