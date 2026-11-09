@@ -1,6 +1,6 @@
 # Gallery storage and delivery investigation (#217)
 
-Status: cache optimization implemented; WebP and settings-only publication are **not enabled**.
+Status: cache optimization implemented; the recipe pilot implementation is described in [recipe-pilot.md](recipe-pilot.md), with public publication **default-off** pending real-mobile acceptance. WebP preview conversion is not enabled.
 Measured against the renderer at `70dda3ee5cac1b82179b1cec372107151c90aa27`.
 
 ## Reproduce

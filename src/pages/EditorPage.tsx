@@ -1,6 +1,7 @@
 import { initialTextColor } from "~/lib/initial-text-color";
 import { previewUser } from "~/lib/preview-user";
 import { MochiGallery } from "~/components/MochiGallery";
+import { createRecipe } from "~/lib/mochi-recipe";
 import {
   Accordion,
   EditorAccordionItem,
@@ -53,6 +54,10 @@ export function EditorPage() {
     },
   }));
   const { settings, selectedLayer } = history.present;
+  const recipe = useMemo(
+    () => (import.meta.env.VITE_ENABLE_MOCHI_RECIPES === "true" ? createRecipe(settings) : null),
+    [settings],
+  );
   const [fontLoading, setFontLoading] = useState(false);
   const [composing, setComposing] = useState(false);
   const [uploadedFont, setUploadedFont] = useState<{ family: string; label: string } | null>(null);
@@ -226,10 +231,14 @@ export function EditorPage() {
           const response = await fetch("/api/mochi", {
             method: "POST",
             headers: {
-              "Content-Type": "image/gif",
+              "Content-Type": recipe ? "application/json" : "image/gif",
               "X-Mochi-Filename": encodeURIComponent(downloadFilename(settings.layers, "gif")),
             },
-            body: settings.motion === "none" ? await exportGif(ctx, settings) : blob,
+            body: recipe
+              ? JSON.stringify(recipe)
+              : settings.motion === "none"
+                ? await exportGif(ctx, settings)
+                : blob,
             signal: AbortSignal.timeout(15000),
           });
           if (!response.ok) throw new Error("publish");
@@ -238,7 +247,7 @@ export function EditorPage() {
           setStatus("");
           toast("다운로드 완료 · 모두의 모찌에 공개했어요.", { id: "editor-download" });
           try {
-            const counted = await fetch(`/api/mochi/${id}/download`, {
+            const counted = await fetch(`/api/mochi/${id}/${recipe ? "count" : "download"}`, {
               method: "POST",
               signal: AbortSignal.timeout(15000),
             });
@@ -713,7 +722,7 @@ export function EditorPage() {
             </div>
             <footer className="flex flex-col items-center gap-inset pt-group">
               <Checkbox
-                label="모두의 모찌에 공개"
+                label={recipe ? "모두의 모찌에 공개 (텍스트·설정 포함)" : "모두의 모찌에 공개"}
                 checked={publish}
                 onCheckedChange={setPublish}
                 disabled={busy}
