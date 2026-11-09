@@ -98,6 +98,8 @@ Owner: GitHub issue #1. Editing/rendering stays in the browser. Only explicitly 
 
 ## Public gallery — E6 (#128)
 
+- E6e (#208): Label the download-count sort tab “랭킹” instead of “가장 많이 다운로드”; preserve the popular sort value, download-count ordering, tab accessibility, pagination reset and API behavior.
+
 - E6b (#153): Gallery sorting tabs omit the rectangular focus outline. Preserve the active underline, native focusability and arrow-key tab navigation; other controls retain their focus styling.
 
 - E6a (#169): Gallery download success shows “모찌를 다운로드했어요.” in the existing Sonner snackbar at bottom center for 3 seconds, without inline success text or layout shift. Repeated successes reuse one toast. Mount one application toaster with narrow viewport/safe-area offsets and accessible live announcements; keep download errors inline and existing counters/download semantics unchanged. Verify real download flow with local mocked responses, placement, expiry, repeat and failure through Aside.

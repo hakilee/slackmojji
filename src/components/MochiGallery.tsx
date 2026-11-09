@@ -104,7 +104,7 @@ export function MochiGallery() {
             최근
           </Tabs.Trigger>
           <Tabs.Trigger value="popular" className="focus-visible:outline-none">
-            가장 많이 다운로드
+            랭킹
           </Tabs.Trigger>
         </Tabs.List>
         <Tabs.Content value={sort}>
