@@ -51,7 +51,7 @@ export function LayerEditor({
         >
           이미지 추가
         </Button>
-        <EmojiPicker onAdd={(text) => onAddText({ text, font: "Noto Sans KR" })} />
+        <EmojiPicker onAdd={(text) => onAddText({ text, font: "Pretendard" })} />
       </div>
       <div className="space-y-control">
         <div className="flex items-center gap-1">

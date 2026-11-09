@@ -4,7 +4,7 @@ import { encode } from "modern-gif";
 export const maxTextCharacters = 40;
 export const motionFrameDelays = { 0.5: 120, 1: 60, 1.5: 40, 2: 30 } as const;
 
-export const fonts: readonly string[] = ["Black Han Sans", "Jua", "Noto Sans KR"];
+export const fonts: readonly string[] = ["Black Han Sans", "Jua", "Pretendard"];
 export const motions = {
   none: "없음",
   scale: "두근두근",
