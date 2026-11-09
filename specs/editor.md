@@ -4,6 +4,8 @@
 
 Owner: GitHub issue #1. Editing/rendering stays in the browser. Only explicitly published rendered GIFs leave the device; source images, fonts and editable documents remain local.
 
+- E5br (#206): On each page load select a preview author from Gene (진), Izy (이지), Rubato (루바토), Loopy (루피), Everett (에버렛), Orra (오라), Coke (코크), Cola (콜라), Ria (리아), Crong (크롱), Chloe (클로이), Hailey (헤일리), each paired one-to-one in this order with a self-hosted Iconloom abstract avatar from showcase numbers 3,4,8,11,12,13,15,16,17,18,19,20. Keep both stable during editing and reaction changes. Use tab session storage to exclude the previous profile on reload; gracefully fall back to random selection when storage is unavailable. Retain the 36px decorative avatar, preview geometry, reaction behavior and export content. Supersedes E5h’s fixed flower avatar.
+
 - E5bq (#204): Keep the focusable font-upload input visually hidden at 1×1px inside its positioned upload-button wrapper. Shared Input sizing must not expand scrollable overflow or scroll the text-layer panel into blank space when focused/activated. Preserve native file selection, keyboard access, focus-within indication, cancellation, validation and loading. Verify panel scroll bounds before/after activation with Aside on desktop/narrow viewports.
 
 - E5bp (#200): Font upload and Google Fonts use an equal two-column action row with icons. Upload uses a button-styled label linked to a focusable visually hidden native file input; preserve loading, disabled state, validation and upload selection.

@@ -1,3 +1,4 @@
+import { previewUser } from "~/lib/preview-user";
 import { MochiGallery } from "~/components/MochiGallery";
 import {
   Accordion,
@@ -629,7 +630,7 @@ export function EditorPage() {
               >
                 <div className="flex items-start gap-2 text-[15px]">
                   <img
-                    src="/profile-flower.svg"
+                    src={previewUser.avatar}
                     alt=""
                     width="36"
                     height="36"
@@ -637,7 +638,7 @@ export function EditorPage() {
                   />
                   <div className="min-w-0">
                     <div className="flex flex-wrap items-baseline gap-x-2 leading-5">
-                      <strong className="font-semibold">Haki (하키)</strong>
+                      <strong className="font-semibold">{previewUser.name}</strong>
                       <time className="text-caption text-fg-neutral-muted" dateTime="00:54">
                         오전 12:54
                       </time>
