@@ -1,3 +1,4 @@
+import { initialTextColor } from "~/lib/initial-text-color";
 import { previewUser } from "~/lib/preview-user";
 import { MochiGallery } from "~/components/MochiGallery";
 import {
@@ -41,7 +42,16 @@ export function EditorPage() {
   const [reducedMotion, setReducedMotion] = useState(
     () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
   );
-  const [history, dispatch] = useReducer(editorHistoryReducer, initialEditorHistory);
+  const [history, dispatch] = useReducer(editorHistoryReducer, initialEditorHistory, (history) => ({
+    ...history,
+    present: {
+      ...history.present,
+      settings: {
+        ...history.present.settings,
+        layers: [{ ...initialTextLayer, color: initialTextColor }],
+      },
+    },
+  }));
   const { settings, selectedLayer } = history.present;
   const [fontLoading, setFontLoading] = useState(false);
   const [composing, setComposing] = useState(false);
@@ -432,6 +442,7 @@ export function EditorPage() {
                   type: "add-text",
                   layer: {
                     ...initialTextLayer,
+                    color: initialTextColor,
                     id: crypto.randomUUID(),
                     text: "텍스트",
                     scale: 0.6,
