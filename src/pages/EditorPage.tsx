@@ -597,7 +597,7 @@ export function EditorPage() {
                 </div>
               </EditorAccordionItem>
               <EditorAccordionItem value="motion" title="효과" summary={motions[settings.motion]}>
-                <div className="grid grid-cols-3 gap-control">
+                <div className="grid grid-cols-4 gap-control">
                   {Object.entries(motions).map(([motion, label]) => (
                     <ChoiceButton
                       className="flex flex-col items-center gap-control max-[480px]:px-control"

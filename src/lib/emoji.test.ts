@@ -600,7 +600,9 @@ describe("emoji editor [E1 E2 E3 E4]", () => {
           expect(inside, `${motion} frame ${frame}`).toBeGreaterThan(0);
         }
       }
-      if (["bounce", "slide", "shake", "roll", "orbit", "swing"].includes(motion))
+      if (
+        ["bounce", "slide", "shake", "roll", "orbit", "swing", "tremble", "float"].includes(motion)
+      )
         expect(overflowFrames).toBeGreaterThan(0);
       else expect(overflowFrames).toBe(0);
     },

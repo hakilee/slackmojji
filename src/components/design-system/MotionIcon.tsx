@@ -11,6 +11,9 @@ const paths: Record<Settings["motion"], string> = {
   swing: "M12 4l-5 12M4 19a12 12 0 0 0 16 0M12 4l5 12M12 3v2M5 16l4 2M15 18l4-2",
   jelly:
     "M7 5c-4 0-1 4-1 7s-3 7 1 7c3 0 3-2 5-2s2 2 5 2c4 0 1-4 1-7s3-7-1-7c-3 0-3 2-5 2S10 5 7 5Z",
+  tremble: "M3 9l2 3-2 3M21 9l-2 3 2 3M8 7h8v10H8z",
+  squash: "M6 10h12v4H6zM12 3v4M9 5l3 2 3-2M12 21v-4M9 19l3-2 3 2",
+  float: "M12 3v18M9 6l3-3 3 3M9 18l3 3 3-3M4 10h3M17 14h3",
 };
 
 /** 24px grid, 2px optical inset, 2px rounded strokes. */
