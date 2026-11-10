@@ -1,5 +1,7 @@
 # GIF emoji editor
 
+- E5ca (#238): Spotlight action buttons remain outside the scrollable instruction body. On mobile, provide at least 44px-tall touch targets. Preserve viewport docking, step/highlight transitions and reduced-motion behavior.
+
 - E5bz (#233): Display header usage replay as a 34px question-mark icon button immediately left of undo, with accessible name and tooltip “사용법”. Preserve both assigned variants, keyboard access and dismissal focus restoration.
 
 - E5by (#231): Spotlight transitions between target bounds and panel positions, with reduced-motion opt-out. Shorten each step to a title and compact instruction, use small shared action buttons, and dock the narrow-screen panel above the visual viewport bottom so large highlighted regions do not squeeze instructions into an internally scrolled popover. Preserve step order, storage/variant assignment, replay, focus and dismissal. Retain a viewport-height overflow fallback only for exceptionally short/zoomed screens.
