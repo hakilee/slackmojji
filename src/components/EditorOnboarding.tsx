@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Button, Modal, MotionIcon, Popover } from "~/components/design-system";
+import { Button, Modal, Popover } from "~/components/design-system";
 import { onboardingVariant } from "~/lib/onboarding-variant";
 import styles from "./EditorOnboarding.module.css";
 
@@ -115,7 +115,7 @@ export function EditorOnboarding() {
       <Modal open={open} onOpenChange={(value) => (value ? setOpen(true) : finish("skipped"))}>
         <Modal.Trigger asChild>{guideButton}</Modal.Trigger>
         <Modal.Content
-          className="max-w-190 overflow-y-auto max-[760px]:w-[calc(100%-24px)]"
+          className="max-w-190 break-keep overflow-y-auto max-[760px]:w-[calc(100%-24px)]"
           onCloseAutoFocus={(event) => {
             event.preventDefault();
             trigger.current?.focus({ preventScroll: true });
@@ -123,7 +123,7 @@ export function EditorOnboarding() {
         >
           <Modal.Title>나만의 모찌, 이렇게 만들어요</Modal.Title>
           <Modal.Description className="mt-control text-label text-fg-neutral-secondary">
-            캔버스에서 꾸미고, Slack 크기로 확인한 뒤 저장해요.
+            캔버스에서 꾸미고 Slack에서 사용할 수 있어요!
           </Modal.Description>
           <ol className="my-group grid grid-cols-3 gap-group max-[600px]:grid-cols-1">
             <li className="flex flex-col gap-control">
@@ -131,13 +131,13 @@ export function EditorOnboarding() {
                 aria-hidden="true"
                 className="flex h-28 items-center justify-center rounded-control bg-bg-checker-base bg-[conic-gradient(var(--color-bg-checker-tile)_25%,transparent_0_50%,var(--color-bg-checker-tile)_0_75%,transparent_0)] bg-size-[16px_16px]"
               >
-                <span className="border border-stroke-focus px-control text-xl font-bold text-fg-brand">
+                <span className="border border-stroke-focus px-control text-2xl font-bold text-orange-600">
                   좋아요
                 </span>
               </div>
-              <h3 className="text-body font-semibold">1. 캔버스에서 편집</h3>
+              <h3 className="text-body font-semibold">1. 나만의 모찌 꾸미기</h3>
               <p className="text-label text-fg-neutral-secondary">
-                텍스트나 이미지를 추가하고, 크기와 위치를 조절해요.
+                글자나 이미지를 넣고 크기와 위치를 조절해요.
               </p>
             </li>
             <li className="flex flex-col gap-control">
@@ -145,11 +145,13 @@ export function EditorOnboarding() {
                 aria-hidden="true"
                 className="flex h-28 items-center justify-center rounded-control bg-bg-neutral-weak"
               >
-                <MotionIcon motion="swing" />
+                <span className={`${styles.demoMotion} text-2xl font-bold text-orange-600`}>
+                  좋아요
+                </span>
               </div>
               <h3 className="text-body font-semibold">2. 움직임 더하기</h3>
               <p className="text-label text-fg-neutral-secondary">
-                효과와 속도를 골라 움직이는 모찌를 만들어요.
+                마음에 드는 효과와 속도로 생동감을 더해요.
               </p>
             </li>
             <li className="flex flex-col gap-control">
@@ -157,13 +159,16 @@ export function EditorOnboarding() {
                 aria-hidden="true"
                 className="flex h-28 items-center justify-center rounded-control bg-bg-neutral-weak"
               >
-                <span className="rounded-full border border-stroke-neutral px-group py-control text-label">
-                  좋아요 1
+                <span className="inline-flex items-center gap-control rounded-full border border-stroke-neutral bg-white px-group py-control text-label">
+                  <span className={`${styles.demoMotion} inline-block font-bold text-orange-600`}>
+                    좋아요
+                  </span>
+                  <span className="text-fg-neutral-secondary">1</span>
                 </span>
               </div>
-              <h3 className="text-body font-semibold">3. 확인하고 다운로드</h3>
+              <h3 className="text-body font-semibold">3. Slack에서 사용하기</h3>
               <p className="text-label text-fg-neutral-secondary">
-                Slack 반응 크기로 확인해요. 공개를 끄면 내 기기에만 저장해요.
+                반응 크기로 확인한 뒤 다운로드해 Slack에 추가해요.
               </p>
             </li>
           </ol>

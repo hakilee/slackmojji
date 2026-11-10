@@ -213,19 +213,19 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 171
+          "line": 176
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 174
+          "line": 179
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 238
+          "line": 243
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 241
+          "line": 246
         },
         {
           "file": "src/components/MochiGallery.tsx",
@@ -818,7 +818,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 182
+          "line": 187
         }
       ]
     },
@@ -852,7 +852,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 208
+          "line": 213
         }
       ]
     },
@@ -875,7 +875,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 195
+          "line": 200
         }
       ]
     },
@@ -894,7 +894,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 192
+          "line": 197
         }
       ]
     },
@@ -1257,7 +1257,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 193
+          "line": 198
         }
       ]
     },
@@ -1391,10 +1391,6 @@
       "component": "MotionIcon",
       "target": "src/components/design-system/MotionIcon.tsx",
       "usages": [
-        {
-          "file": "src/components/EditorOnboarding.tsx",
-          "line": 148
-        },
         {
           "file": "src/pages/EditorPage.tsx",
           "line": 612
@@ -1682,7 +1678,6 @@
         "Modal.Description",
         "Modal.Title",
         "Modal.Trigger",
-        "MotionIcon",
         "Popover",
         "Popover.Anchor",
         "Popover.Content",
