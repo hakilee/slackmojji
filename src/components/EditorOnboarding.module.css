@@ -1,0 +1,36 @@
+.highlight {
+  transition:
+    left 240ms ease,
+    top 240ms ease,
+    width 240ms ease,
+    height 240ms ease;
+}
+
+.panel :global([data-radix-popper-content-wrapper]) {
+  transition: transform 240ms ease;
+}
+
+.copy {
+  animation: appear 180ms ease-out;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .highlight,
+  .panel :global([data-radix-popper-content-wrapper]) {
+    transition: none;
+  }
+  .copy {
+    animation: none;
+  }
+}

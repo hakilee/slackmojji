@@ -1,22 +1,23 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Button, Modal, MotionIcon, Popover } from "~/components/design-system";
 import { onboardingVariant } from "~/lib/onboarding-variant";
+import styles from "./EditorOnboarding.module.css";
 
 const steps = [
   {
     target: "#work-canvas",
-    title: "여기가 편집하는 캔버스예요",
-    body: "글자를 눌러 옮기고, 모서리를 드래그해 크기를 바꿔보세요. 모바일에서는 탭으로 선택한 뒤 다시 드래그해요.",
+    title: "캔버스에서 편집해요",
+    body: "탭으로 선택한 뒤 드래그해 이동해요. 모서리를 끌면 크기가 바뀌어요.",
   },
   {
     target: "#onboarding-effects",
-    title: "움직임을 더해보세요",
-    body: "효과를 고르면 모찌가 움직여요. 속도와 반복 딜레이도 조절할 수 있어요. ‘없음’을 고르면 정지 이미지로 저장해요.",
+    title: "움직임을 더해요",
+    body: "효과를 고르고 속도를 조절해요. ‘없음’은 정지 이미지예요.",
   },
   {
     target: "#onboarding-preview",
-    title: "실제 크기로 확인하고 다운로드해요",
-    body: "Slack 반응 크기와 확대 화면을 비교해보세요. ‘모두의 모찌에 공개’를 끄면 내 기기에만 다운로드해요.",
+    title: "확인하고 다운로드해요",
+    body: "Slack 크기로 확인해요. 공개를 끄면 내 기기에만 저장해요.",
   },
 ];
 
@@ -33,7 +34,20 @@ export function EditorOnboarding() {
   const trigger = useRef<HTMLButtonElement>(null);
   const scroll = useRef(0);
   const anchor = useMemo(
-    () => ({ current: { getBoundingClientRect: () => rect ?? new DOMRect() } }),
+    () => ({
+      current: {
+        getBoundingClientRect: () => {
+          if (window.innerWidth > 1000) return rect ?? new DOMRect();
+          const viewport = window.visualViewport;
+          return new DOMRect(
+            (viewport?.offsetLeft ?? 0) + (viewport?.width ?? window.innerWidth) / 2,
+            (viewport?.offsetTop ?? 0) + (viewport?.height ?? window.innerHeight) - 12,
+            0,
+            0,
+          );
+        },
+      },
+    }),
     [rect],
   );
 
@@ -56,7 +70,12 @@ export function EditorOnboarding() {
     if (!open || onboardingVariant !== "spotlight") return;
     const target = document.querySelector(steps[step].target);
     if (!target) return;
-    target.scrollIntoView({ block: "center", behavior: "instant" });
+    target.scrollIntoView({
+      block: "center",
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "instant"
+        : "smooth",
+    });
     const update = () => setRect(target.getBoundingClientRect());
     update();
     const observer = new ResizeObserver(update);
@@ -166,10 +185,10 @@ export function EditorOnboarding() {
       <Popover.Anchor virtualRef={anchor} />
       {open && rect && (
         <Popover.Provider>
-          <div>
+          <div className={styles.panel}>
             <div
               aria-hidden="true"
-              className="pointer-events-none fixed z-50 rounded-panel border-2 border-stroke-focus"
+              className={`${styles.highlight} pointer-events-none fixed z-50 rounded-panel border-2 border-stroke-focus`}
               style={{
                 left: rect.left - 4,
                 top: rect.top - 4,
@@ -179,35 +198,40 @@ export function EditorOnboarding() {
               }}
             />
             <Popover.Content
-              side={window.innerWidth > 1000 ? "right" : "bottom"}
-              sideOffset={16}
+              side={window.innerWidth > 1000 ? "right" : "top"}
+              sideOffset={window.innerWidth > 1000 ? 16 : 0}
+              avoidCollisions={window.innerWidth > 1000}
+              updatePositionStrategy="always"
               collisionPadding={12}
               aria-labelledby="onboarding-title"
               aria-describedby="onboarding-description"
-              className="z-50 w-80 max-w-[calc(100vw-24px)] max-h-[var(--radix-popover-content-available-height)] overflow-y-auto p-group"
+              className="z-50 w-80 max-w-[calc(100vw-24px)] max-h-[calc(100dvh-24px)] overflow-y-auto p-3"
               onInteractOutside={(event) => event.preventDefault()}
               onCloseAutoFocus={(event) => {
                 event.preventDefault();
                 trigger.current?.focus({ preventScroll: true });
               }}
             >
-              <h2 id="onboarding-title" className="text-body font-semibold">
-                {steps[step].title}
-              </h2>
-              <p
-                id="onboarding-description"
-                className="mt-control text-label text-fg-neutral-secondary"
-              >
-                {steps[step].body}
-              </p>
-              <div className="mt-group flex items-center gap-control">
+              <div key={step} className={styles.copy}>
+                <h2 id="onboarding-title" className="text-label font-semibold">
+                  {steps[step].title}
+                </h2>
+                <p
+                  id="onboarding-description"
+                  className="mt-control text-label text-fg-neutral-secondary"
+                >
+                  {steps[step].body}
+                </p>
+              </div>
+              <div className="mt-3 flex items-center gap-control">
                 <span className="mr-auto text-caption text-fg-neutral-muted" aria-live="polite">
                   {step + 1} / {steps.length}
                 </span>
-                <Button variant="white" onClick={() => finish("skipped")}>
+                <Button size="small" variant="white" onClick={() => finish("skipped")}>
                   건너뛰기
                 </Button>
                 <Button
+                  size="small"
                   onClick={() =>
                     step === steps.length - 1 ? finish("completed") : setStep(step + 1)
                   }
