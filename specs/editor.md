@@ -1,5 +1,7 @@
 # GIF emoji editor
 
+- E5cb (#240): Refine overview concept 3 with consistent warm-orange sample text across canvas selection, an animated swinging word, and a compact Slack reaction. Keep three-step layout, natural Korean copy and word-preserving wrapping. Introduce with “캔버스에서 꾸미고 Slack에서 사용할 수 있어요!”; respect reduced motion and preserve assignment/replay/completion behavior.
+
 - E5ca (#238): Spotlight action buttons remain outside the scrollable instruction body. On mobile, provide at least 44px-tall touch targets. Preserve viewport docking, step/highlight transitions and reduced-motion behavior.
 
 - E5bz (#233): Display header usage replay as a 34px question-mark icon button immediately left of undo, with accessible name and tooltip “사용법”. Preserve both assigned variants, keyboard access and dismissal focus restoration.

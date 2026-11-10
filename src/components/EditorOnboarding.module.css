@@ -1,3 +1,18 @@
+.demoMotion {
+  animation: demo-swing 1.6s ease-in-out infinite;
+  transform-origin: 50% 80%;
+}
+
+@keyframes demo-swing {
+  0%,
+  100% {
+    transform: rotate(-12deg) translateY(1px);
+  }
+  50% {
+    transform: rotate(12deg) translateY(-3px);
+  }
+}
+
 .content {
   display: flex;
   flex-direction: column;
@@ -42,7 +57,8 @@
   .panel :global([data-radix-popper-content-wrapper]) {
     transition: none;
   }
-  .copy {
+  .copy,
+  .demoMotion {
     animation: none;
   }
 }
