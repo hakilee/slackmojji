@@ -1,3 +1,4 @@
+import { EditorOnboarding } from "~/components/EditorOnboarding";
 import { initialTextColor } from "~/lib/initial-text-color";
 import { previewUser } from "~/lib/preview-user";
 import { MochiGallery } from "~/components/MochiGallery";
@@ -375,6 +376,7 @@ export function EditorPage() {
               onRestore={() => restore("redo", false)}
             />
           </div>
+          <EditorOnboarding />
         </header>
         <div className="grid grid-cols-3 items-start gap-section p-panel max-[760px]:p-group max-[1000px]:grid-cols-1">
           <section className="min-w-0" aria-label="이모지 편집">
@@ -596,7 +598,12 @@ export function EditorPage() {
                   />
                 </div>
               </EditorAccordionItem>
-              <EditorAccordionItem value="motion" title="효과" summary={motions[settings.motion]}>
+              <EditorAccordionItem
+                id="onboarding-effects"
+                value="motion"
+                title="효과"
+                summary={motions[settings.motion]}
+              >
                 <div className="grid grid-cols-4 gap-control">
                   {Object.entries(motions).map(([motion, label]) => (
                     <ChoiceButton
@@ -643,6 +650,7 @@ export function EditorPage() {
           </section>
           <section
             className="flex min-w-0 flex-col min-[1001px]:sticky min-[1001px]:top-section"
+            id="onboarding-preview"
             aria-label="미리보기"
           >
             <h2 className="min-h-heading-slot text-body font-semibold">미리보기</h2>

@@ -1,5 +1,7 @@
 # GIF emoji editor
 
+- E5bw (#225): First visits show a skippable three-step spotlight for canvas manipulation, effects and preview/download. Persist completed/skipped state in `slackmojji:onboarding:v1`; storage failures never block editing. A header usage button reopens the tour. Preserve document settings/history, restore focus and pre-tour scroll on dismissal, support Escape/keyboard containment, and reposition after viewport/scroll changes. Use the existing accessible Popover primitive and overlay geometry without inserting layout-shifting content.
+
 - E5bv (#223): Offer twelve effect choices, including none, in a four-column/three-row grid on desktop and narrow screens. Add tremble (fast horizontal translation), squash (vertical compression) and float (smooth signed vertical translation), with matching icons and shared canvas/preview/GIF rendering. Preserve the existing nine effect semantics and the fixed v1 public recipe allowlist; new effects publish through the GIF fallback. Verify decoded text/image animation, frame timing, transparency and geometry with existing motion-parameterized tests.
 
 - E2e (#202): Replace the bundled Noto Sans KR preset with Pretendard (400), including emoji/kaomoji insertion and specimens. Reuse the installed self-hosted subset fonts; preserve UI variable typography, other presets, and the Google Fonts catalog.
