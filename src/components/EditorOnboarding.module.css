@@ -76,9 +76,4 @@
     width: 100%;
     max-width: none;
   }
-
-  .actions button {
-    min-height: 44px;
-    min-width: 64px;
-  }
 }
