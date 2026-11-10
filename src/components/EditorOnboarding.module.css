@@ -50,7 +50,8 @@
 @media (max-width: 1000px) {
   .panel :global([data-radix-popper-content-wrapper]) {
     inset: auto 12px 12px !important;
-    width: auto;
+    width: calc(100vw - 24px);
+    min-width: 0 !important;
     transform: none !important;
     transition: none;
   }
