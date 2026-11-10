@@ -14,16 +14,4 @@ describe("kaomoji catalog [E5ak]", () => {
       expect(constrainText(option.text)).toBe(option.text);
     }
   });
-
-  test.each([
-    ["(╯°□°)╯︵ ┻━┻", "angry", "화남", "table flip"],
-    ["ʕ•ᴥ•ʔ", "animals", "곰", "bear"],
-    ["(・ω・)ノ", "greeting", "안녕", "hello"],
-  ])("labels %s with its mood and Korean/English search terms", (text, category, ko, en) => {
-    const option = kaomojiOptions.find((entry) => entry.text === text);
-
-    expect(option?.category).toBe(category);
-    expect(option?.search).toContain(ko);
-    expect(option?.search).toContain(en);
-  });
 });

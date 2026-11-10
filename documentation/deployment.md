@@ -9,6 +9,7 @@ Use the pinned Wrangler development dependency through Yarn. Authenticate with `
 Configured release path: Cloudflare Workers Builds connected to `hakilee/slackmojji`, production branch `main`, repository root `/`, preview builds disabled. GitHub Actions remain unused. GitHub branch protection requires PRs; a squash merge produces the main push that triggers the release.
 
 - Build command: `corepack enable && yarn install --immutable && yarn verify`
+- `WORKERS_CI=1` is injected by Cloudflare. `scripts/verify.mjs` retains format/lint/design-system/types/build checks but leaves Vitest execution to local pre-push verification. `yarn test` remains unconditional.
 - Deploy command: `yarn wrangler d1 migrations apply slackmojji-gallery --remote && yarn wrangler deploy`
 - Build environment: `NODE_VERSION=24.18.0`, `HUSKY=0` (remote Git hooks only; `yarn verify` remains mandatory).
 - Build API token must authorize deployment of this Worker and access to its configured D1/R2 resources. Keep token values in Cloudflare, never in this repository.
@@ -28,7 +29,7 @@ yarn wrangler deploy
 yarn wrangler deployments list
 ```
 
-Worker URL: `https://slackmojji.haklee.workers.dev`. A deployment updates the Worker and its custom domain immediately; there is no separate staging Worker or release-isolation environment. Validate locally before deploying. GitHub Actions are not used. For manual recovery, upload only the verified local `dist` output. The configured Workers Builds path must also pass full verification before deployment.
+Worker URL: `https://slackmojji.haklee.workers.dev`. A deployment updates the Worker and its custom domain immediately; there is no separate staging Worker or release-isolation environment. Validate locally before deploying. GitHub Actions are not used. For manual recovery, upload only the verified local `dist` output. The configured Workers Builds path must pass its static/type/build checks before deployment; complete tests run locally before push.
 
 Confirm public HTTP 200, TLS, custom-domain routing and exact HTML/JS/CSS/font asset bytes. Use Aside CLI to verify text/font/motion editing, local font upload and GIF download on the production hostname. Record accepted commit, Worker version and results on the owning issue/PR. Native renderer tests do not establish production browser behavior. API failures return generic errors without credentials; no external error monitoring is configured.
 
@@ -72,4 +73,4 @@ Official configuration references: [Workers Static Assets](https://developers.cl
 
 Canonical hostname is `slackmojji.haklee.me`. The Worker also owns `slackmoji.haklee.me` and the interim `mojji.haklee.me`, redirecting both with308 and preserving path/query/method. Canonical non-API requests pass to ASSETS. The repository and Worker are `slackmojji`; the local checkout directory need not match.
 
-D1/R2 `slackmojji-gallery` preserve all gallery IDs, filenames, bytes and counters. Previous resources are inactive rollback backups only. Automatic main deployment retains full yarn verify. Visible Korean brand is 슬랙모찌.
+D1/R2 `slackmojji-gallery` preserve all gallery IDs, filenames, bytes and counters. Previous resources are inactive rollback backups only. Automatic main deployment retains static/type/build verification; local pre-push retains full tests. Visible Korean brand is 슬랙모찌.

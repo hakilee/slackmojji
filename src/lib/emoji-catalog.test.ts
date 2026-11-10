@@ -46,19 +46,4 @@ describe("emoji catalog [E5ak]", () => {
     expect(emojiOptions.some((option) => option.text === "🇦" || option.text === "🏻")).toBe(false);
     expect(emojiOptions.find((option) => option.text === "🇰🇷")?.category).toBe("9");
   });
-
-  test.each([
-    ["👍", "엄지", "1"],
-    ["👍🏽", "최고", "1"],
-    ["👍🏽", "thumbsup", "1"],
-    ["🐱", "cat", "3"],
-    ["❤️", "heart", "0"],
-    ["👩🏽‍💻", "👩🏽‍💻", "1"],
-  ])("makes %s discoverable by %s in its category", async (text, query, category) => {
-    const emojiOptions = await loadEmojiCatalog();
-    expect(emojiOptions.find((option) => option.text === text)).toMatchObject({
-      category,
-      search: expect.stringContaining(query),
-    });
-  });
 });

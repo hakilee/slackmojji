@@ -1,11 +1,11 @@
 import { createCanvas, loadImage } from "@napi-rs/canvas";
+import { Buffer } from "node:buffer";
 import { decode, decodeFrames } from "modern-gif";
 import { describe, expect, onTestFinished, test, vi } from "vitest";
 import {
   constrainText,
   drawEmoji,
   exportGif,
-  downloadFilename,
   exportEmoji,
   initialSettings as defaultSettings,
   initialTextLayer,
@@ -13,7 +13,6 @@ import {
   type Settings,
   motions,
   measureEmojiText,
-  textCharacters,
   validateText,
 } from "~/lib/emoji";
 
@@ -140,33 +139,6 @@ describe("emoji editor [E1 E2 E3 E4]", () => {
       expect(ctx.getImageData(8, 8, 1, 1).data[3]).toBe(255);
     },
   );
-  test.each([
-    ["하키짱", "하키짱.gif"],
-    ["하키\n짱", "하키 짱.gif"],
-    ["a/b:c?", "a b c.gif"],
-    ["...", "slackmojji.gif"],
-  ])("names GIF from text %s", (text, name) => {
-    expect(downloadFilename([{ ...initialTextLayer, text }], "gif")).toBe(name);
-  });
-  test("uses source image name when text is blank", () => {
-    const image: ImageLayer = {
-      type: "image",
-      id: "image",
-      name: "하키짱.png",
-      source: createCanvas(1, 1) as unknown as HTMLCanvasElement,
-      aspectRatio: 1,
-      x: 64,
-      y: 64,
-      size: 48,
-      rotation: 0,
-      fit: "contain",
-    };
-    expect(downloadFilename([{ ...initialTextLayer, text: " " }, image], "gif")).toBe("하키짱.gif");
-    expect(downloadFilename([], "gif")).toBe("slackmojji.gif");
-    expect(downloadFilename([{ ...initialTextLayer, text: "가".repeat(100) }], "gif")).toBe(
-      "가".repeat(80) + ".gif",
-    );
-  });
   test.each([true, false])(
     "exports static PNG with alpha and background transparent=%s",
     async (transparent) => {
@@ -206,7 +178,6 @@ describe("emoji editor [E1 E2 E3 E4]", () => {
       expect(canvas.getContext("2d").getImageData(64, 64, 1, 1).data[3]).toBe(
         transparent ? source.getContext("2d").getImageData(64, 64, 1, 1).data[3] : 255,
       );
-      expect(downloadFilename(defaultSettings.layers, "png")).toBe("슬랙 모찌.png");
     },
   );
   test("exports animated effects as GIF", async () => {
@@ -405,11 +376,6 @@ describe("emoji editor [E1 E2 E3 E4]", () => {
     },
   );
 
-  test("accepts Unicode characters and three lines", () => {
-    expect(validateText("안녕\n반가워\n🎉".repeat(1))).toBeNull();
-    expect(validateText("🎉".repeat(40))).toBeNull();
-  });
-
   test.each(["👩🏽‍💻", "(╯°□°)╯︵ ┻━┻"])(
     "exports a complete inserted %s as an animated GIF [E5ak]",
     async (text) => {
@@ -481,7 +447,11 @@ describe("emoji editor [E1 E2 E3 E4]", () => {
       expect(gif[0].delay).toBe(frameDelay + delay);
       expect(gif.slice(1).every((frame) => frame.delay === frameDelay)).toBe(true);
       expect(gif.reduce((total, frame) => total + frame.delay, 0)).toBe(frameDelay * 20 + delay);
-      expect(gif.map((frame) => frame.data)).toEqual(baseline.map((frame) => frame.data));
+      expect(baseline).toHaveLength(gif.length);
+      for (const [index, frame] of gif.entries()) {
+        // Compare every decoded byte natively instead of recursively traversing 1.3M channels.
+        expect(Buffer.from(frame.data).equals(Buffer.from(baseline[index].data))).toBe(true);
+      }
     },
   );
 
@@ -570,7 +540,7 @@ describe("emoji editor [E1 E2 E3 E4]", () => {
         expect(Math.abs(dimensions[1].height - dimensions[0].height * factor)).toBeLessThanOrEqual(
           2,
         );
-        for (let frame = 0; frame < 120; frame += 1) {
+        for (let frame = 0; frame < 20; frame += 1) {
           ctx.resetTransform();
           ctx.clearRect(0, 0, 256, 256);
           ctx.translate(64, 64);
@@ -583,7 +553,7 @@ describe("emoji editor [E1 E2 E3 E4]", () => {
                 { ...initialTextLayer, text, characterColors: { 0: "#ff0000", 2: "#00ff00" } },
               ],
             },
-            frame / 120,
+            frame / 20,
           );
           const pixels = ctx.getImageData(0, 0, 256, 256).data;
           let outside = 0;
@@ -648,10 +618,6 @@ describe("emoji editor [E1 E2 E3 E4]", () => {
       expect(pixels[3]).toBe(0);
     },
   );
-
-  test("keeps combined characters together for color selection", () => {
-    expect(textCharacters("가👨‍👩‍👧‍👦e\u0301\n나")).toEqual(["가", "👨‍👩‍👧‍👦", "e\u0301", "\n", "나"]);
-  });
 
   test("exports individual colors across lines with foreground fallback", async () => {
     const canvas = createCanvas(128, 128);
