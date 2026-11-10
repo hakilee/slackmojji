@@ -20,7 +20,7 @@ export function SegmentedControl<T extends string>({
     >
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0.5 left-0.5 rounded-control-inset border border-neutral-200 bg-white shadow-control transition-transform duration-200 ease-out motion-reduce:transition-none"
+        className="pointer-events-none absolute inset-y-0.5 left-0.5 rounded-control-inset border border-neutral-200 bg-bg-layer-default shadow-control transition-transform duration-200 ease-out motion-reduce:transition-none"
         style={{
           width: `calc((100% - var(--spacing) * ${options.length}) / ${options.length})`,
           transform: `translateX(calc(${options.findIndex((option) => option.value === value)} * (100% + var(--spacing))))`,

@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <EditorPage />
     <Toaster
       position="bottom-center"
-      theme="dark"
+      theme="system"
       duration={3000}
       offset={{ bottom: "calc(24px + env(safe-area-inset-bottom))" }}
       mobileOffset={{ bottom: "calc(16px + env(safe-area-inset-bottom))", left: 16, right: 16 }}

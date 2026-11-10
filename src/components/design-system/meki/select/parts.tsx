@@ -48,7 +48,7 @@ export const SelectTriggerRender = (
   return (
     <Trigger
       className={cn(
-        "flex cursor-pointer items-center justify-between border border-neutral-200 bg-white text-text-primary",
+        "flex cursor-pointer items-center justify-between border border-neutral-200 bg-bg-layer-default text-text-primary",
         "hover:border-neutral-300 focus:border-primary disabled:cursor-not-allowed disabled:bg-neutral-100 disabled:text-neutral-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
         triggerSizes[size],
         className,
@@ -73,7 +73,7 @@ const renderSelectContent = function renderSelectContent(
       <Content
         className={cn(
           styles.content,
-          "w-full min-w-(--radix-select-trigger-width) z-popover max-h-[min(20rem,var(--radix-select-content-available-height))] overflow-y-auto rounded-control bg-white p-0.5 ring-1 ring-inset ring-neutral-200",
+          "w-full min-w-(--radix-select-trigger-width) z-popover max-h-[min(20rem,var(--radix-select-content-available-height))] overflow-y-auto rounded-control bg-bg-layer-default p-0.5 ring-1 ring-inset ring-neutral-200",
           className,
         )}
         position="popper"

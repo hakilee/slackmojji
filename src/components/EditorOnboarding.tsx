@@ -149,7 +149,7 @@ export function EditorOnboarding() {
                 >
                   좋아요
                 </span>
-                <span className="absolute bottom-2 rounded-full bg-white px-2 py-1 text-caption text-fg-neutral-secondary">
+                <span className="absolute bottom-2 rounded-full bg-bg-layer-default px-2 py-1 text-caption text-fg-neutral-secondary">
                   {motions.swing} 효과
                 </span>
               </div>
@@ -163,7 +163,7 @@ export function EditorOnboarding() {
                 aria-hidden="true"
                 className="flex h-28 items-center justify-center rounded-control bg-bg-neutral-weak"
               >
-                <span className="inline-flex items-center gap-control rounded-full border border-stroke-neutral bg-white px-group py-control text-label">
+                <span className="inline-flex items-center gap-control rounded-full border border-stroke-neutral bg-bg-layer-default px-group py-control text-label">
                   <span className={`${styles.demoMotion} inline-block font-bold text-orange-600`}>
                     좋아요
                   </span>

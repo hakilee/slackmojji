@@ -43,15 +43,15 @@ const renderButton = (
   const variantStyles: { style: string; disabledStyle: string } = {
     black: {
       disabledStyle: "bg-neutral-200 text-neutral-400",
-      style: "text-white bg-neutral-900 hover:bg-neutral-700",
+      style: "text-fg-on-brand-solid bg-neutral-900 hover:bg-neutral-700",
     },
     neutral: {
       disabledStyle: "text-neutral-300 bg-neutral-100",
       style: "text-neutral-900 bg-neutral-100 hover:bg-neutral-200",
     },
     white: {
-      disabledStyle: "text-neutral-300 border border-neutral-200 bg-white",
-      style: "text-neutral-900 border border-neutral-200 bg-white hover:bg-neutral-50",
+      disabledStyle: "text-neutral-300 border border-neutral-200 bg-bg-layer-default",
+      style: "text-neutral-900 border border-neutral-200 bg-bg-layer-default hover:bg-neutral-50",
     },
   }[variant];
 

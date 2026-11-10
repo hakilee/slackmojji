@@ -13,12 +13,12 @@ const renderModalContent = (
   <Portal>
     <div className="pointer-events-none fixed inset-0 isolate z-modal">
       <Overlay
-        className={cn(styles.overlay, "pointer-events-auto absolute inset-0 bg-neutral-900/25")}
+        className={cn(styles.overlay, "pointer-events-auto absolute inset-0 bg-bg-overlay")}
       />
       <Content
         className={cn(
           styles.content,
-          "pointer-events-auto absolute flex max-h-[85vh] w-full max-w-240 flex-col overflow-hidden rounded-2xl bg-white p-6 shadow-[0_1px_0_rgba(0,0,0,0.05)]",
+          "pointer-events-auto absolute flex max-h-[85vh] w-full max-w-240 flex-col overflow-hidden rounded-2xl bg-bg-layer-default p-6 shadow-[0_1px_0_rgba(0,0,0,0.05)]",
           className,
         )}
         ref={ref}

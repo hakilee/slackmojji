@@ -43,7 +43,7 @@ export function CanvasResizeHandles({
               ],
             }}
           >
-            <span className="pointer-events-none size-2 rounded-[2px] border border-stroke-guide bg-white" />
+            <span className="pointer-events-none size-2 rounded-[2px] border border-stroke-guide bg-bg-layer-default" />
           </span>
         </Fragment>
       ))}
