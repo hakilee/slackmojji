@@ -27,7 +27,7 @@ export async function loadFont(font: string, text: string): Promise<FontFace[]> 
   let timeout: ReturnType<typeof setTimeout> | undefined;
   try {
     return await Promise.race([
-      document.fonts.load(`100px "${font}"`, text),
+      document.fonts.load(`${font === "Pretendard" ? "600 " : ""}100px "${font}"`, text),
       new Promise<never>((_, reject) => {
         timeout = setTimeout(() => reject(new Error("font load timeout")), 15000);
       }),

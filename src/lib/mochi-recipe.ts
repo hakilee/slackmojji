@@ -66,7 +66,12 @@ export type MochiRecipe = z.infer<typeof recipeSchema>;
 export const maxRecipeBytes = 16384;
 
 export function createRecipe(settings: Settings): MochiRecipe | null {
-  if (settings.layers.some((item) => item.type !== "text" || item.fontLabel)) return null;
+  if (
+    settings.layers.some(
+      (item) => item.type !== "text" || item.fontLabel || item.font === "Pretendard",
+    )
+  )
+    return null;
   const parsed = recipeSchema.safeParse({
     schemaVersion: 1,
     rendererVersion: 1,

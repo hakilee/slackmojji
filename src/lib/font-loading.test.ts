@@ -31,12 +31,14 @@ describe("text font loading [E2d]", () => {
     await loadLayerFonts([
       initialTextLayer,
       { ...initialTextLayer, id: "second", font: "Jua", text: "두번째" },
+      { ...initialTextLayer, id: "semibold", font: "Pretendard", text: "굵기" },
       { ...initialTextLayer, id: "blank", font: "Unavailable", text: " \n" },
     ]);
 
     expect(load.mock.calls).toEqual([
       ['100px "Black Han Sans"', "슬랙\n모찌"],
       ['100px "Jua"', "두번째"],
+      ['600 100px "Pretendard"', "굵기"],
     ]);
   });
 

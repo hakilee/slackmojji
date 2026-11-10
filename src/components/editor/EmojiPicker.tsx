@@ -216,7 +216,7 @@ export function EmojiPicker({ onAdd }: { onAdd: (text: string) => void }) {
               >
                 <span
                   className={mode === "emoji" ? "" : "text-lg wrap-anywhere"}
-                  style={{ fontFamily: '"Pretendard", sans-serif' }}
+                  style={{ fontFamily: '"Pretendard", sans-serif', fontWeight: 600 }}
                 >
                   {option.text}
                 </span>
