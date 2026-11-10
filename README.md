@@ -1,6 +1,6 @@
 # 슬랙모찌
 
-텍스트를 Slack용 GIF 이모지로 만드는 브라우저 전용 사이트입니다.
+텍스트와 이미지를 Slack용 이모지로 편집하고, 선택한 결과를 갤러리에 공개하는 사이트입니다.
 
 [슬랙모찌 편집기 열기](https://slackmojji.haklee.me)
 
@@ -27,9 +27,10 @@ yarn dev
 - 9가지 모션: 없음·두근두근·통통·슬라이드·흔들흔들·빙글빙글·둥실둥실·갸우뚱·말랑말랑
 - 새로고침마다 선택되는 기본 글자색과 이름별 캐릭터 프로필
 - 40자·3줄 제한 에디터와 실시간 Slack 반응 카운터 미리보기
-- 128×128 GIF 다운로드, 128 KiB 상한, 무한 반복
+- 모션 없음: 완전 알파를 보존하는 128×128 PNG 다운로드
+- 모션 있음: 128×128 GIF 다운로드, 128 KiB 상한, 무한 반복
 
-모든 렌더링은 브라우저 안에서 이루어집니다. Google Fonts는 선택 시 외부에서 글꼴 파일을 불러오며 입력 텍스트를 API 매개변수로 전송하지 않습니다.
+편집과 렌더링은 브라우저 안에서 이루어집니다. 비공개 다운로드는 갤러리에 올리지 않습니다. 공개를 선택하면 렌더링한 GIF를 동일 출처 Worker에 보내며, R2가 파일을, D1이 목록과 카운터를 저장합니다. 원본 이미지·업로드 글꼴·편집 이력은 보내지 않습니다. 기본 비활성인 텍스트 recipe 파일럿은 별도 공개 안내와 실제 모바일 수락이 필요합니다. [제품 계약](specs/editor.md)을 참고하세요. Google Fonts는 선택 시 외부에서 글꼴 파일을 불러오며 입력 텍스트를 API 매개변수로 전송하지 않습니다.
 
 이모지 목록은 [Emojibase](https://emojibase.dev/docs/datasets/)의 한글 데이터와 영문 별칭을 지연 로딩합니다. 이모지와 카오모지는 편집 가능한 텍스트 레이어로 추가되며, 이모지 모양과 지원 여부는 기기의 글꼴에 따라 달라집니다.
 
@@ -42,7 +43,7 @@ GIF 투명도는 반투명이 아닌 완전 투명/불투명을 지원합니다.
 React 19.3.1 · TanStack Router 1.170.46 · Tailwind CSS 4.3.3 · Vite 8.3.5. 설치 시점의 stable 버전을 사용하고 `yarn.lock`으로 재현합니다. TypeScript 7.0.2 · oxlint 1.90.0 · oxfmt 0.75.0을 사용합니다.
 
 ```sh
-yarn verify       # format → lint → types (including tests) → tests → build
+yarn verify       # format → lint → design-system → types (including tests) → tests → build
 yarn test:watch
 yarn preview     # production build first
 ```
