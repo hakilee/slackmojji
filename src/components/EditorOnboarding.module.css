@@ -48,6 +48,18 @@
 }
 
 @media (max-width: 1000px) {
+  .panel :global([data-radix-popper-content-wrapper]) {
+    inset: auto 12px 12px !important;
+    width: auto;
+    transform: none !important;
+    transition: none;
+  }
+
+  .content {
+    width: 100%;
+    max-width: none;
+  }
+
   .actions button {
     min-height: 44px;
     min-width: 64px;
