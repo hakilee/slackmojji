@@ -100,7 +100,17 @@ describe("versioned text recipes [E6g]", () => {
         },
       ],
     };
-    const restored = restoreRecipe(createRecipe(settings)!);
+    expect(createRecipe(settings)).toBeNull();
+    const restored = restoreRecipe(
+      recipeSchema.parse({
+        ...createRecipe(initialSettings),
+        settings: {
+          ...settings,
+          layers: settings.layers.map(({ id: _id, type: _type, ...layer }) => layer),
+        },
+      }),
+    );
+    settings.layers[0].font = "Mochi v1 Pretendard";
     const original = createCanvas(128, 128).getContext("2d");
     const target = createCanvas(128, 128).getContext("2d");
     const layout = new Map();

@@ -117,7 +117,7 @@ export function validateSettings(settings: Settings): string | null {
 
 export function measureEmojiText(ctx: CanvasRenderingContext2D, settings: TextLayer) {
   const lines = settings.text.split("\n");
-  ctx.font = `100px "${settings.font}"`;
+  ctx.font = `${settings.font === "Pretendard" ? "600 " : ""}100px "${settings.font}"`;
   ctx.textAlign = "left";
   ctx.textBaseline = "alphabetic";
   let characterIndex = 0;
@@ -288,7 +288,7 @@ export function drawEmoji(
       const measured = layout?.get(layer) ?? measureEmojiText(ctx, layer);
       layout?.set(layer, measured);
       const { lines, runs, metrics, width, height, top, bottom } = measured;
-      ctx.font = `100px "${layer.font}"`;
+      ctx.font = `${layer.font === "Pretendard" ? "600 " : ""}100px "${layer.font}"`;
       ctx.textAlign = "left";
       ctx.textBaseline = "alphabetic";
       ctx.scale(Math.min(126 / width, 126 / height), Math.min(126 / width, 126 / height));

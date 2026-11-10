@@ -141,7 +141,7 @@ export function FontPicker({
           >
             <span
               className="shrink-0 text-[22px] whitespace-nowrap max-[760px]:text-lg"
-              style={{ fontFamily: family }}
+              style={{ fontFamily: family, fontWeight: family === "Pretendard" ? 600 : undefined }}
             >
               가나다 Aa
             </span>

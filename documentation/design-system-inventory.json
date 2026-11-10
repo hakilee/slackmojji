@@ -532,7 +532,7 @@
         },
         {
           "file": "src/components/editor/TextLayerEditor.tsx",
-          "line": 178
+          "line": 182
         },
         {
           "file": "src/pages/EditorPage.tsx",
@@ -909,7 +909,7 @@
         },
         {
           "file": "src/components/editor/TextLayerEditor.tsx",
-          "line": 180
+          "line": 184
         },
         {
           "file": "src/pages/EditorPage.tsx",
@@ -928,7 +928,7 @@
         },
         {
           "file": "src/components/editor/TextLayerEditor.tsx",
-          "line": 194
+          "line": 198
         },
         {
           "file": "src/pages/EditorPage.tsx",
@@ -951,11 +951,11 @@
         },
         {
           "file": "src/components/editor/TextLayerEditor.tsx",
-          "line": 195
+          "line": 199
         },
         {
           "file": "src/components/editor/TextLayerEditor.tsx",
-          "line": 196
+          "line": 200
         },
         {
           "file": "src/pages/EditorPage.tsx",
@@ -998,7 +998,7 @@
         },
         {
           "file": "src/components/editor/TextLayerEditor.tsx",
-          "line": 191
+          "line": 195
         },
         {
           "file": "src/pages/EditorPage.tsx",
@@ -1017,7 +1017,7 @@
         },
         {
           "file": "src/components/editor/TextLayerEditor.tsx",
-          "line": 192
+          "line": 196
         },
         {
           "file": "src/pages/EditorPage.tsx",
@@ -1297,11 +1297,11 @@
         },
         {
           "file": "src/components/editor/TextLayerEditor.tsx",
-          "line": 121
+          "line": 125
         },
         {
           "file": "src/components/editor/TextLayerEditor.tsx",
-          "line": 136
+          "line": 140
         },
         {
           "file": "src/pages/EditorPage.tsx",
@@ -1367,15 +1367,15 @@
         },
         {
           "file": "src/components/editor/TextLayerEditor.tsx",
-          "line": 162
+          "line": 166
         },
         {
           "file": "src/components/editor/TextLayerEditor.tsx",
-          "line": 170
+          "line": 174
         },
         {
           "file": "src/components/editor/TextLayerEditor.tsx",
-          "line": 206
+          "line": 210
         },
         {
           "file": "src/pages/EditorPage.tsx",
@@ -1411,7 +1411,7 @@
         },
         {
           "file": "src/components/editor/TextLayerEditor.tsx",
-          "line": 142
+          "line": 146
         },
         {
           "file": "src/pages/EditorPage.tsx",
@@ -1449,7 +1449,7 @@
         },
         {
           "file": "src/components/editor/TextLayerEditor.tsx",
-          "line": 111
+          "line": 115
         },
         {
           "file": "src/pages/EditorPage.tsx",

@@ -52,7 +52,11 @@ export function TextLayerEditor({
               aria-invalid={!!invalid}
               autoComplete="off"
               spellCheck={false}
-              style={{ fontFamily: `"${layer.font}"`, lineHeight: layer.lineHeight / 100 }}
+              style={{
+                fontFamily: `"${layer.font}"`,
+                fontWeight: layer.font === "Pretendard" ? 600 : undefined,
+                lineHeight: layer.lineHeight / 100,
+              }}
               value={value}
               rows={Math.max(1, value.split("\n").length)}
               wrap="off"

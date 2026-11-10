@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "pretendard/dist/web/static/Pretendard-Regular.css";
+import "pretendard/dist/web/static/Pretendard-SemiBold.css";
 import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 import "@fontsource/black-han-sans";
 import "@fontsource/jua";
