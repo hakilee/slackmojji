@@ -209,15 +209,27 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 88
+          "line": 81
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 133
+          "line": 140
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 136
+          "line": 143
+        },
+        {
+          "file": "src/components/EditorOnboarding.tsx",
+          "line": 162
+        },
+        {
+          "file": "src/components/EditorOnboarding.tsx",
+          "line": 207
+        },
+        {
+          "file": "src/components/EditorOnboarding.tsx",
+          "line": 210
         },
         {
           "file": "src/components/MochiGallery.tsx",
@@ -639,6 +651,10 @@
         {
           "file": "src/components/editor/FontPicker.tsx",
           "line": 195
+        },
+        {
+          "file": "src/components/EditorOnboarding.tsx",
+          "line": 79
         }
       ]
     },
@@ -669,6 +685,10 @@
         {
           "file": "src/components/editor/FontPicker.tsx",
           "line": 217
+        },
+        {
+          "file": "src/components/EditorOnboarding.tsx",
+          "line": 85
         }
       ]
     },
@@ -684,6 +704,10 @@
         {
           "file": "src/components/editor/FontPicker.tsx",
           "line": 235
+        },
+        {
+          "file": "src/components/EditorOnboarding.tsx",
+          "line": 93
         }
       ]
     },
@@ -699,6 +723,10 @@
         {
           "file": "src/components/editor/FontPicker.tsx",
           "line": 228
+        },
+        {
+          "file": "src/components/EditorOnboarding.tsx",
+          "line": 92
         }
       ]
     },
@@ -714,6 +742,10 @@
         {
           "file": "src/components/editor/FontPicker.tsx",
           "line": 211
+        },
+        {
+          "file": "src/components/EditorOnboarding.tsx",
+          "line": 80
         }
       ]
     },
@@ -790,7 +822,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 77
+          "line": 151
         }
       ]
     },
@@ -824,7 +856,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 107
+          "line": 181
         }
       ]
     },
@@ -847,7 +879,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 94
+          "line": 168
         }
       ]
     },
@@ -866,7 +898,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 87
+          "line": 161
         }
       ]
     },
@@ -1229,7 +1261,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 92
+          "line": 166
         }
       ]
     },
@@ -1363,6 +1395,10 @@
       "component": "MotionIcon",
       "target": "src/components/design-system/MotionIcon.tsx",
       "usages": [
+        {
+          "file": "src/components/EditorOnboarding.tsx",
+          "line": 116
+        },
         {
           "file": "src/pages/EditorPage.tsx",
           "line": 615
@@ -1645,13 +1681,19 @@
       "components": ["EditorOnboarding"],
       "designSystem": [
         "Button",
+        "Modal",
+        "Modal.Content",
+        "Modal.Description",
+        "Modal.Title",
+        "Modal.Trigger",
+        "MotionIcon",
         "Popover",
         "Popover.Anchor",
         "Popover.Content",
         "Popover.Provider",
         "Popover.Trigger"
       ],
-      "dependencies": ["src/components/design-system/index.ts"]
+      "dependencies": ["src/components/design-system/index.ts", "src/lib/onboarding-variant.ts"]
     },
     {
       "file": "src/components/MochiGallery.tsx",
