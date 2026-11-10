@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Button, Modal, Popover } from "~/components/design-system";
+import { motions } from "~/lib/emoji";
 import { onboardingVariant } from "~/lib/onboarding-variant";
 import styles from "./EditorOnboarding.module.css";
 
@@ -141,12 +142,15 @@ export function EditorOnboarding() {
               </p>
             </li>
             <li className="flex flex-col gap-control">
-              <div
-                aria-hidden="true"
-                className="flex h-28 items-center justify-center rounded-control bg-bg-neutral-weak"
-              >
-                <span className={`${styles.demoMotion} text-2xl font-bold text-orange-600`}>
+              <div className="relative flex h-28 items-center justify-center rounded-control bg-bg-neutral-weak">
+                <span
+                  aria-hidden="true"
+                  className={`${styles.demoMotion} text-2xl font-bold text-orange-600`}
+                >
                   좋아요
+                </span>
+                <span className="absolute bottom-2 rounded-full bg-white px-2 py-1 text-caption text-fg-neutral-secondary">
+                  {motions.swing} 효과
                 </span>
               </div>
               <h3 className="text-body font-semibold">2. 움직임 더하기</h3>

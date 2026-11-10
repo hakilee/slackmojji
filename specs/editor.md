@@ -1,5 +1,7 @@
 # GIF emoji editor
 
+- E5cc (#242): Label the overview motion illustration with the editor’s shared swing effect name (“갸우뚱 효과”) inside the example area. Keep the label readable to assistive technology while the decorative animated word remains hidden; preserve animation and responsive layout.
+
 - E5cb (#240): Refine overview concept 3 with consistent warm-orange sample text across canvas selection, an animated swinging word, and a compact Slack reaction. Keep three-step layout, natural Korean copy and word-preserving wrapping. Introduce with “캔버스에서 꾸미고 Slack에서 사용할 수 있어요!”; respect reduced motion and preserve assignment/replay/completion behavior.
 
 - E5ca (#238): Spotlight action buttons remain outside the scrollable instruction body. On mobile, provide at least 44px-tall touch targets. Preserve viewport docking, step/highlight transitions and reduced-motion behavior.
