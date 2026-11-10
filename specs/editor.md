@@ -1,5 +1,7 @@
 # GIF emoji editor
 
+- E7d (#244): Canonical public domain is slackmochi.site. Attach it as a custom domain to the existing Worker and redirect slackmojji.haklee.me, slackmoji.haklee.me and retained mojji.haklee.me directly with 308, preserving path/query/method. Keep Worker/repository/resource names, gallery data and unrelated DNS unchanged. Supersedes E7c’s public hostname only. Browser-local settings are origin-scoped and do not migrate across domains.
+
 - E5cc (#242): Label the overview motion illustration with the editor’s shared swing effect name (“갸우뚱 효과”) inside the example area. Keep the label readable to assistive technology while the decorative animated word remains hidden; preserve animation and responsive layout.
 
 - E5cb (#240): Refine overview concept 3 with consistent warm-orange sample text across canvas selection, an animated swinging word, and a compact Slack reaction. Keep three-step layout, natural Korean copy and word-preserving wrapping. Introduce with “캔버스에서 꾸미고 Slack에서 사용할 수 있어요!”; respect reduced motion and preserve assignment/replay/completion behavior.

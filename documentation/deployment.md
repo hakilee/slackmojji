@@ -1,6 +1,6 @@
 # Production deployment
 
-Public hostname: `slackmojji.haklee.me`. Cloudflare account: `haklee` (`93300edc910b267d9a3f0efd51bf600d`); Worker: `slackmojji`. The repository's `wrangler.json` owns assets, account and custom-domain configuration. The app remains a CSR application on Workers Static Assets; same-origin `/api/*` requests run `src/server/worker.ts` with D1/R2 bindings, not Pages or SSR. Navigation requests use SPA fallback; assets retain their normal file responses.
+Public hostname: `slackmochi.site`. Cloudflare account: `haklee` (`93300edc910b267d9a3f0efd51bf600d`); Worker: `slackmojji`. The repository's `wrangler.json` owns assets, account and custom-domain configuration. The app remains a CSR application on Workers Static Assets; same-origin `/api/*` requests run `src/server/worker.ts` with D1/R2 bindings, not Pages or SSR. Navigation requests use SPA fallback; assets retain their normal file responses.
 
 Use the pinned Wrangler development dependency through Yarn. Authenticate with `yarn wrangler login` if needed, then confirm `yarn wrangler whoami` includes the intended account. Keep credentials, `.wrangler/`, `.dev.vars*`, `.env*` and browser state out of Git. Never log authentication tokens.
 
@@ -35,7 +35,7 @@ Confirm public HTTP 200, TLS, custom-domain routing and exact HTML/JS/CSS/font a
 
 ## Domain and migration boundary
 
-Cloudflare is authoritative for `haklee.me`. The Worker custom domain owns only `slackmojji.haklee.me`; Wrangler may replace the superseded DNS record for this hostname when attaching it. Preserve unrelated DNS records, services and nameservers. Do not buy or transfer a domain.
+Cloudflare is authoritative for `haklee.me` and `slackmochi.site`. Worker custom domains own the `slackmochi.site` apex and three legacy aliases listed in `wrangler.json`; attaching a custom domain manages its DNS record and certificate. Preserve unrelated DNS records, services and nameservers. Do not buy or transfer a domain.
 
 For the initial migration only, derive a temporary configuration without routes, pointing at the exact same `dist`, then validate workers.dev before assigning the custom domain:
 
@@ -71,6 +71,8 @@ Official configuration references: [Workers Static Assets](https://developers.cl
 
 ## Corrected infrastructure naming (#183)
 
-Canonical hostname is `slackmojji.haklee.me`. The Worker also owns `slackmoji.haklee.me` and the interim `mojji.haklee.me`, redirecting both with308 and preserving path/query/method. Canonical non-API requests pass to ASSETS. The repository and Worker are `slackmojji`; the local checkout directory need not match.
+Canonical hostname is `slackmochi.site` (#244). The Worker also owns `slackmojji.haklee.me`, `slackmoji.haklee.me` and the interim `mojji.haklee.me`, redirecting all directly with308 and preserving path/query/method. Canonical non-API requests pass to ASSETS. The repository and Worker are `slackmojji`; the local checkout directory need not match.
 
 D1/R2 `slackmojji-gallery` preserve all gallery IDs, filenames, bytes and counters. Previous resources are inactive rollback backups only. Automatic main deployment retains static/type/build verification; local pre-push retains full tests. Visible Korean brand is 슬랙모찌.
+
+Browser-local onboarding, profile and editor storage is origin-scoped: existing local settings are not transferred to the new hostname. Public gallery data remains shared through unchanged D1/R2 bindings.

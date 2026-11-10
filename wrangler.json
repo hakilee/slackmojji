@@ -5,7 +5,9 @@
   "compatibility_date": "2026-11-03",
   "workers_dev": true,
   "preview_urls": false,
-  "vars": { "ENABLE_MOCHI_RECIPES": "false" },
+  "vars": {
+    "ENABLE_MOCHI_RECIPES": "false"
+  },
   "assets": {
     "directory": "./dist",
     "not_found_handling": "single-page-application",
@@ -23,6 +25,10 @@
     },
     {
       "pattern": "slackmojji.haklee.me",
+      "custom_domain": true
+    },
+    {
+      "pattern": "slackmochi.site",
       "custom_domain": true
     }
   ],
