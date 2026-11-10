@@ -167,7 +167,6 @@ export function EditorOnboarding() {
               </p>
             </li>
           </ol>
-          <p className="text-caption text-fg-neutral-muted">체크무늬는 투명 배경이에요.</p>
           <div className="mt-group flex flex-wrap justify-end gap-control">
             <Button variant="white" onClick={() => finish("skipped")}>
               나중에 볼게요
