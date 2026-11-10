@@ -1,5 +1,7 @@
 # GIF emoji editor
 
+- E5bz (#233): Display header usage replay as a 34px question-mark icon button immediately left of undo, with accessible name and tooltip “사용법”. Preserve both assigned variants, keyboard access and dismissal focus restoration.
+
 - E5by (#231): Spotlight transitions between target bounds and panel positions, with reduced-motion opt-out. Shorten each step to a title and compact instruction, use small shared action buttons, and dock the narrow-screen panel above the visual viewport bottom so large highlighted regions do not squeeze instructions into an internally scrolled popover. Preserve step order, storage/variant assignment, replay, focus and dismissal. Retain a viewport-height overflow fallback only for exceptionally short/zoomed screens.
 
 - E5bx (#227): Assign newly loaded browsers with equal probability to onboarding variants `spotlight` (concept 1) or `overview` (concept 3), retaining a validated assignment under `slackmojji:onboarding:variant:v1`. Reuse the existing completion/skipping key without re-enrolling prior visitors; usage replay retains the assigned variant. Initialize assignment once per page load, including when storage is unavailable, so StrictMode/renders do not reroll it. The overview is a dismissible, keyboard-accessible single modal explaining edit → motion → preview/download; stack content on mobile. No analytics or comparison conclusions are implied by local random assignment.

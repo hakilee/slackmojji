@@ -26,7 +26,7 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 507
+          "line": 504
         }
       ]
     },
@@ -209,27 +209,23 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 100
+          "line": 97
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 159
+          "line": 172
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 162
+          "line": 175
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 181
+          "line": 239
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 230
-        },
-        {
-          "file": "src/components/EditorOnboarding.tsx",
-          "line": 233
+          "line": 242
         },
         {
           "file": "src/components/MochiGallery.tsx",
@@ -245,7 +241,7 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 744
+          "line": 741
         }
       ]
     },
@@ -540,7 +536,7 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 565
+          "line": 562
         }
       ]
     },
@@ -654,7 +650,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 98
+          "line": 115
         }
       ]
     },
@@ -688,7 +684,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 104
+          "line": 117
         }
       ]
     },
@@ -707,7 +703,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 112
+          "line": 125
         }
       ]
     },
@@ -726,7 +722,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 111
+          "line": 124
         }
       ]
     },
@@ -745,7 +741,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 99
+          "line": 116
         }
       ]
     },
@@ -822,7 +818,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 170
+          "line": 183
         }
       ]
     },
@@ -856,7 +852,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 200
+          "line": 209
         }
       ]
     },
@@ -879,7 +875,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 187
+          "line": 196
         }
       ]
     },
@@ -898,7 +894,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 180
+          "line": 193
         }
       ]
     },
@@ -917,7 +913,7 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 567
+          "line": 564
         }
       ]
     },
@@ -936,7 +932,7 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 584
+          "line": 581
         }
       ]
     },
@@ -963,19 +959,19 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
+          "line": 582
+        },
+        {
+          "file": "src/pages/EditorPage.tsx",
+          "line": 583
+        },
+        {
+          "file": "src/pages/EditorPage.tsx",
+          "line": 584
+        },
+        {
+          "file": "src/pages/EditorPage.tsx",
           "line": 585
-        },
-        {
-          "file": "src/pages/EditorPage.tsx",
-          "line": 586
-        },
-        {
-          "file": "src/pages/EditorPage.tsx",
-          "line": 587
-        },
-        {
-          "file": "src/pages/EditorPage.tsx",
-          "line": 588
         }
       ]
     },
@@ -1006,7 +1002,7 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 581
+          "line": 578
         }
       ]
     },
@@ -1025,7 +1021,7 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 582
+          "line": 579
         }
       ]
     },
@@ -1091,7 +1087,7 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 751
+          "line": 748
         }
       ]
     },
@@ -1261,7 +1257,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 185
+          "line": 194
         }
       ]
     },
@@ -1309,11 +1305,11 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 515
+          "line": 512
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 601
+          "line": 598
         }
       ]
     },
@@ -1339,7 +1335,7 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 609
+          "line": 606
         }
       ]
     },
@@ -1353,11 +1349,11 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 594
+          "line": 591
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 735
+          "line": 732
         }
       ]
     },
@@ -1383,11 +1379,11 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 545
+          "line": 542
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 553
+          "line": 550
         }
       ]
     },
@@ -1397,11 +1393,11 @@
       "usages": [
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 135
+          "line": 148
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 615
+          "line": 612
         }
       ]
     },
@@ -1423,11 +1419,11 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 527
+          "line": 524
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 627
+          "line": 624
         }
       ]
     },
@@ -1461,7 +1457,7 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 636
+          "line": 633
         }
       ]
     },
@@ -1485,7 +1481,7 @@
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 385
+          "line": 382
         }
       ]
     },
@@ -1539,7 +1535,7 @@
       "usages": [
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 688
+          "line": 685
         }
       ]
     },
@@ -1549,11 +1545,11 @@
       "usages": [
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 368
+          "line": 366
         },
         {
           "file": "src/pages/EditorPage.tsx",
-          "line": 373
+          "line": 371
         }
       ]
     }
