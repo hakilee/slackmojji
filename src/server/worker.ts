@@ -19,9 +19,9 @@ export default {
     context: Pick<ExecutionContext, "waitUntil">,
   ): Promise<Response> {
     const url = new URL(request.url);
-    if (["slackmoji.haklee.me", "mojji.haklee.me"].includes(url.hostname)) {
+    if (["slackmojji.haklee.me", "slackmoji.haklee.me", "mojji.haklee.me"].includes(url.hostname)) {
       url.protocol = "https:";
-      url.host = "slackmojji.haklee.me";
+      url.host = "slackmochi.site";
       return new Response(null, {
         status: 308,
         headers: { Location: url.toString(), "Cache-Control": "no-store" },
