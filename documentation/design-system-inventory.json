@@ -209,15 +209,11 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 81
+          "line": 100
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 140
-        },
-        {
-          "file": "src/components/EditorOnboarding.tsx",
-          "line": 143
+          "line": 159
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
@@ -225,11 +221,15 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 207
+          "line": 181
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 210
+          "line": 230
+        },
+        {
+          "file": "src/components/EditorOnboarding.tsx",
+          "line": 233
         },
         {
           "file": "src/components/MochiGallery.tsx",
@@ -654,7 +654,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 79
+          "line": 98
         }
       ]
     },
@@ -688,7 +688,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 85
+          "line": 104
         }
       ]
     },
@@ -707,7 +707,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 93
+          "line": 112
         }
       ]
     },
@@ -726,7 +726,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 92
+          "line": 111
         }
       ]
     },
@@ -745,7 +745,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 80
+          "line": 99
         }
       ]
     },
@@ -822,7 +822,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 151
+          "line": 170
         }
       ]
     },
@@ -856,7 +856,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 181
+          "line": 200
         }
       ]
     },
@@ -879,7 +879,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 168
+          "line": 187
         }
       ]
     },
@@ -898,7 +898,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 161
+          "line": 180
         }
       ]
     },
@@ -1261,7 +1261,7 @@
         },
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 166
+          "line": 185
         }
       ]
     },
@@ -1397,7 +1397,7 @@
       "usages": [
         {
           "file": "src/components/EditorOnboarding.tsx",
-          "line": 116
+          "line": 135
         },
         {
           "file": "src/pages/EditorPage.tsx",
@@ -1693,7 +1693,11 @@
         "Popover.Provider",
         "Popover.Trigger"
       ],
-      "dependencies": ["src/components/design-system/index.ts", "src/lib/onboarding-variant.ts"]
+      "dependencies": [
+        "src/components/EditorOnboarding.module.css",
+        "src/components/design-system/index.ts",
+        "src/lib/onboarding-variant.ts"
+      ]
     },
     {
       "file": "src/components/MochiGallery.tsx",
