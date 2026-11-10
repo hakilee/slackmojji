@@ -213,7 +213,7 @@ export function EditorOnboarding() {
               collisionPadding={12}
               aria-labelledby="onboarding-title"
               aria-describedby="onboarding-description"
-              className="z-50 w-80 max-w-[calc(100vw-24px)] max-h-[calc(100dvh-24px)] overflow-y-auto p-3"
+              className={`${styles.content} z-50 w-80 max-w-[calc(100vw-24px)] max-h-[calc(100dvh-24px)] p-3`}
               onInteractOutside={(event) => event.preventDefault()}
               onCloseAutoFocus={(event) => {
                 event.preventDefault();
@@ -231,7 +231,7 @@ export function EditorOnboarding() {
                   {steps[step].body}
                 </p>
               </div>
-              <div className="mt-3 flex items-center gap-control">
+              <div className={`${styles.actions} mt-3 flex items-center gap-control`}>
                 <span className="mr-auto text-caption text-fg-neutral-muted" aria-live="polite">
                   {step + 1} / {steps.length}
                 </span>
