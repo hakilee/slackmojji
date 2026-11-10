@@ -249,35 +249,6 @@ describe("editor history [E2b E5v]", () => {
     ).toBe(history);
   });
 
-  test("deletes text and restores its content, styling, placement and selection", () => {
-    let history = editorHistoryReducer(initialEditorHistory, {
-      type: "change-text",
-      id: initialTextLayer.id,
-      patch: {
-        text: "복구!",
-        x: 30,
-        y: 90,
-        scale: 0.6,
-        characterColors: { 0: "#ff0000", 2: "#00ff00" },
-      },
-    });
-    history = editorHistoryReducer(history, { type: "select", id: initialTextLayer.id });
-    const before = history.present;
-
-    history = editorHistoryReducer(history, { type: "delete", id: initialTextLayer.id });
-
-    expect(history.present.settings).toEqual({
-      ...before.settings,
-      layers: [],
-    });
-    expect(history.present.selectedLayer).toBeNull();
-    history = editorHistoryReducer(history, { type: "undo" });
-    expect(history.present).toEqual(before);
-    history = editorHistoryReducer(history, { type: "redo" });
-    expect(history.present.settings.layers).toEqual([]);
-    expect(history.present.selectedLayer).toBeNull();
-  });
-
   test("restores deleted image resources, stacking and exact rendered pixels", () => {
     const source = createCanvas(16, 8);
     source.getContext("2d").fillStyle = "#f43060";

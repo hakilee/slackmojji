@@ -12,7 +12,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "verify": "yarn format:check && yarn lint && yarn design-system:check && yarn typecheck && yarn test && yarn build",
+    "verify": "node scripts/verify.mjs",
     "prepare": "husky",
     "icons": "node scripts/generate-icons.mjs",
     "design-system:inventory": "node scripts/design-system.mjs --write",
