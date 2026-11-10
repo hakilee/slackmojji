@@ -2,6 +2,8 @@
 
 Owner: GitHub issue #3.
 
+- D4 (#246): Include the user-provided Google AdSense auto-ads script in the shared HTML head, async and crossorigin anonymous, using publisher ca-pub-2083525239932603. All SPA document entries share it; do not add manual ad slots or duplicate script injection. Script installation does not establish AdSense approval or actual ad serving.
+
 - T1: Use maintained stable registry releases for direct packages, TypeScript, Yarn and Wrangler, respecting the configured package-age gate. Keep an immutable lockfile; do not retain compatibility-only pins or force peer ranges.
 - T2: oxlint replaces ESLint, and oxfmt replaces Prettier. Remove obsolete dependencies/configuration; retain correctness, TypeScript and React hooks/refresh checks through supported Oxc rules. Formatting and lint errors fail local hooks.
 - T3: `yarn verify` checks formatting, lint, design-system inventory, source/test types, all Vitest tests and production build. Husky keeps the same gates. No GitHub Actions. Cloudflare Workers Builds is the hosted verification/release exception authorized by #157.
