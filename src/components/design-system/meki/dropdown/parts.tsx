@@ -14,7 +14,7 @@ const renderDropdownMenuContent = (
     <Content
       className={cn(
         styles.content,
-        "min-w-24 rounded-control border border-stroke-neutral bg-white p-0.5",
+        "min-w-24 rounded-control border border-stroke-neutral bg-bg-layer-default p-0.5",
         className,
       )}
       ref={ref}

@@ -21,7 +21,7 @@ const renderTooltipContent = function renderTooltipContent(
     <Content
       className={cn(
         styles.content,
-        "z-[var(--z-index-popover)] overflow-hidden rounded-md border border-neutral-100 bg-white px-3 py-1.5 font-medium text-text-primary text-xs shadow-md dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50",
+        "z-[var(--z-index-popover)] overflow-hidden rounded-md border border-neutral-100 bg-bg-layer-default px-3 py-1.5 font-medium text-text-primary text-xs shadow-md",
         className,
       )}
       ref={ref}

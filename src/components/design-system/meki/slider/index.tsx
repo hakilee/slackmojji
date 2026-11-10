@@ -31,7 +31,7 @@ const renderSlider = function renderSlider(
         id={id}
         aria-label={label}
         aria-valuetext={valueText}
-        className="block h-5 w-5 cursor-grab rounded-full border border-neutral-200 bg-white shadow-md transition-colors duration-150 motion-reduce:transition-none hover:border-neutral-300 hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:cursor-grabbing disabled:pointer-events-none disabled:opacity-50"
+        className="block h-5 w-5 cursor-grab rounded-full border border-neutral-200 bg-bg-layer-default shadow-md transition-colors duration-150 motion-reduce:transition-none hover:border-neutral-300 hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 active:cursor-grabbing disabled:pointer-events-none disabled:opacity-50"
       />
     </Root>
   );

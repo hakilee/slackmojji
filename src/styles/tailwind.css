@@ -121,11 +121,11 @@
     -webkit-font-smoothing: antialiased;
   }
   :focus-visible {
-    outline: 2px solid rgb(10 10 10 / 0.9);
+    outline: 2px solid var(--color-stroke-focus);
     outline-offset: 2px;
   }
   ::selection {
-    background-color: rgb(0 0 0 / 0.05);
+    background-color: var(--color-bg-brand-weak-pressed);
   }
 }
 @utility scrollbar-hide {
@@ -138,5 +138,46 @@
 @layer components {
   .glass-card {
     @apply rounded-2xl border-white border-b-2 border-l-2 bg-white/80;
+  }
+}
+
+/* The shared neutral scale is a UI role scale, not document/output colors. */
+:root {
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --color-neutral-50: #202124;
+    --color-neutral-100: #27282c;
+    --color-neutral-200: #383a40;
+    --color-neutral-300: #50535b;
+    --color-neutral-400: #858991;
+    --color-neutral-500: #a5a9b1;
+    --color-neutral-600: #b8bcc3;
+    --color-neutral-700: #cbd0d7;
+    --color-neutral-800: #dce0e6;
+    --color-neutral-900: #eceef2;
+    --color-neutral-950: #f5f6f8;
+    --color-header-background: rgb(24 25 28 / 0.95);
+    --color-background: #121316;
+    --color-bg-layer-default: #1c1d21;
+    --color-bg-neutral-weak-hover: #303238;
+    --color-bg-brand-weak: #27282c;
+    --color-bg-brand-weak-pressed: #383a40;
+    --color-bg-positive-weak: #173b2e;
+    --color-bg-disabled: #27282c;
+    --color-fg-on-brand-solid: #18191c;
+    --color-fg-positive: #80d6af;
+    --color-fg-critical: #ff91a1;
+    --color-bg-overlay: rgb(0 0 0 / 0.65);
+    --color-stroke-focus: #f5f6f8;
+    --color-bg-checker-base: #24262b;
+    --color-bg-checker-tile: #30333a;
+    --color-bg-reaction: #17374b;
+    --color-fg-reaction: #8ed5ff;
+    --color-stroke-reaction: #67bcef;
+    --shadow-control: 0 1px 0 rgb(0 0 0 / 0.25);
+    --shadow-floating: 0 4px 16px rgb(0 0 0 / 0.4);
   }
 }

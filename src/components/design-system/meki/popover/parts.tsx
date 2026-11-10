@@ -24,7 +24,7 @@ const renderPopoverContent = function renderPopoverContent(
     <Content
       className={cn(
         styles.content,
-        "z-[var(--z-index-popover)] max-w-90 overflow-hidden break-keep rounded-md border border-neutral-100 bg-white px-3 py-1.5 font-medium text-text-primary text-xs shadow-sm",
+        "z-[var(--z-index-popover)] max-w-90 overflow-hidden break-keep rounded-md border border-neutral-100 bg-bg-layer-default px-3 py-1.5 font-medium text-text-primary text-xs shadow-sm",
         className,
       )}
       ref={ref}

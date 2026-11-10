@@ -120,7 +120,7 @@ export function ColorPicker({
                   }}
                 />
                 <span
-                  className={`flex size-8 items-center justify-center rounded-control-inset ${color.value === "#ffffff" ? "border border-stroke-neutral text-fg-neutral" : "text-white"}`}
+                  className={`flex size-8 items-center justify-center rounded-control-inset ${color.value === "#ffffff" ? "border border-stroke-neutral text-black" : "text-white"}`}
                   style={{ backgroundColor: color.value }}
                 >
                   {value.toLowerCase() === color.value && (

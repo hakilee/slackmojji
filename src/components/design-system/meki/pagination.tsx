@@ -68,7 +68,7 @@ export const Pagination = ({
           "aria-label": "Previous page",
           children: <ChevronLeftIcon size={16} />,
           className: cn(
-            "flex size-7.5 items-center justify-center rounded-md border border-transparent bg-white text-text-secondary transition-colors",
+            "flex size-7.5 items-center justify-center rounded-md border border-transparent bg-bg-layer-default text-text-secondary transition-colors",
             "hover:border-neutral-100 hover:bg-neutral-50 hover:text-text-primary",
             currentPage === 1 && "pointer-events-none opacity-50",
           ),
@@ -98,7 +98,7 @@ export const Pagination = ({
                     "flex size-7.5 items-center justify-center rounded-md border border-transparent font-medium text-sm transition-colors",
                     isCurrent
                       ? "bg-neutral-100 text-text-primary"
-                      : "bg-white text-text-secondary hover:border-neutral-100 hover:bg-neutral-50 hover:text-text-primary",
+                      : "bg-bg-layer-default text-text-secondary hover:border-neutral-100 hover:bg-neutral-50 hover:text-text-primary",
                   ),
                   href: createPageUrl(page),
                 })}
@@ -110,7 +110,7 @@ export const Pagination = ({
           "aria-label": "Next page",
           children: <ChevronRightIcon size={16} />,
           className: cn(
-            "flex size-7.5 items-center justify-center rounded-md border border-transparent bg-white text-text-secondary transition-colors",
+            "flex size-7.5 items-center justify-center rounded-md border border-transparent bg-bg-layer-default text-text-secondary transition-colors",
             "hover:border-neutral-100 hover:bg-neutral-50 hover:text-text-primary",
             currentPage === totalPages && "pointer-events-none opacity-50",
           ),

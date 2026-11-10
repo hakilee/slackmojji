@@ -21,7 +21,7 @@ const renderHoverCardContent = function renderHoverCardContent(
         align={align}
         className={cn(
           styles.content,
-          "rounded-2xl border border-neutral-100 bg-white shadow-xl outline-none",
+          "rounded-2xl border border-neutral-100 bg-bg-layer-default shadow-xl outline-none",
           className,
         )}
         ref={ref}
