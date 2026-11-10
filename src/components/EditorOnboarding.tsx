@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Button, Popover } from "~/components/design-system";
+import { Button, Modal, MotionIcon, Popover } from "~/components/design-system";
+import { onboardingVariant } from "~/lib/onboarding-variant";
 
 const steps = [
   {
@@ -52,7 +53,7 @@ export function EditorOnboarding() {
   }, [open]);
 
   useEffect(() => {
-    if (!open) return;
+    if (!open || onboardingVariant !== "spotlight") return;
     const target = document.querySelector(steps[step].target);
     if (!target) return;
     target.scrollIntoView({ block: "center", behavior: "instant" });
@@ -72,6 +73,79 @@ export function EditorOnboarding() {
       window.visualViewport?.removeEventListener("scroll", update);
     };
   }, [open, step]);
+
+  if (onboardingVariant === "overview") {
+    return (
+      <Modal open={open} onOpenChange={(value) => (value ? setOpen(true) : finish("skipped"))}>
+        <Modal.Trigger asChild>
+          <Button ref={trigger} variant="white">
+            사용법
+          </Button>
+        </Modal.Trigger>
+        <Modal.Content
+          className="max-w-190 overflow-y-auto max-[760px]:w-[calc(100%-24px)]"
+          onCloseAutoFocus={(event) => {
+            event.preventDefault();
+            trigger.current?.focus({ preventScroll: true });
+          }}
+        >
+          <Modal.Title>나만의 모찌, 이렇게 만들어요</Modal.Title>
+          <Modal.Description className="mt-control text-label text-fg-neutral-secondary">
+            캔버스에서 꾸미고, Slack 크기로 확인한 뒤 저장해요.
+          </Modal.Description>
+          <ol className="my-group grid grid-cols-3 gap-group max-[600px]:grid-cols-1">
+            <li className="flex flex-col gap-control">
+              <div
+                aria-hidden="true"
+                className="flex h-28 items-center justify-center rounded-control bg-bg-checker-base bg-[conic-gradient(var(--color-bg-checker-tile)_25%,transparent_0_50%,var(--color-bg-checker-tile)_0_75%,transparent_0)] bg-size-[16px_16px]"
+              >
+                <span className="border border-stroke-focus px-control text-xl font-bold text-fg-brand">
+                  좋아요
+                </span>
+              </div>
+              <h3 className="text-body font-semibold">1. 캔버스에서 편집</h3>
+              <p className="text-label text-fg-neutral-secondary">
+                텍스트나 이미지를 추가하고, 크기와 위치를 조절해요.
+              </p>
+            </li>
+            <li className="flex flex-col gap-control">
+              <div
+                aria-hidden="true"
+                className="flex h-28 items-center justify-center rounded-control bg-bg-neutral-weak"
+              >
+                <MotionIcon motion="swing" />
+              </div>
+              <h3 className="text-body font-semibold">2. 움직임 더하기</h3>
+              <p className="text-label text-fg-neutral-secondary">
+                효과와 속도를 골라 움직이는 모찌를 만들어요.
+              </p>
+            </li>
+            <li className="flex flex-col gap-control">
+              <div
+                aria-hidden="true"
+                className="flex h-28 items-center justify-center rounded-control bg-bg-neutral-weak"
+              >
+                <span className="rounded-full border border-stroke-neutral px-group py-control text-label">
+                  좋아요 1
+                </span>
+              </div>
+              <h3 className="text-body font-semibold">3. 확인하고 다운로드</h3>
+              <p className="text-label text-fg-neutral-secondary">
+                Slack 반응 크기로 확인해요. 공개를 끄면 내 기기에만 저장해요.
+              </p>
+            </li>
+          </ol>
+          <p className="text-caption text-fg-neutral-muted">체크무늬는 투명 배경이에요.</p>
+          <div className="mt-group flex flex-wrap justify-end gap-control">
+            <Button variant="white" onClick={() => finish("skipped")}>
+              나중에 볼게요
+            </Button>
+            <Button onClick={() => finish("completed")}>모찌 만들기</Button>
+          </div>
+        </Modal.Content>
+      </Modal>
+    );
+  }
 
   return (
     <Popover
