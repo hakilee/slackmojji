@@ -359,12 +359,10 @@ export function EditorPage() {
             <img src="/logo.svg" width="32" height="28" alt="" />
           </Link>
           <h1 className="text-base font-semibold">슬랙모찌</h1>
-          <div
-            id="editor-history"
-            className="ml-auto flex gap-control"
-            role="group"
-            aria-label="편집 기록"
-          >
+          <div className="ml-auto">
+            <EditorOnboarding />
+          </div>
+          <div id="editor-history" className="flex gap-control" role="group" aria-label="편집 기록">
             <HistoryButton
               direction="undo"
               disabled={!history.past.length || fontLoading || composing}
@@ -376,7 +374,6 @@ export function EditorPage() {
               onRestore={() => restore("redo", false)}
             />
           </div>
-          <EditorOnboarding />
         </header>
         <div className="grid grid-cols-3 items-start gap-section p-panel max-[760px]:p-group max-[1000px]:grid-cols-1">
           <section className="min-w-0" aria-label="이모지 편집">

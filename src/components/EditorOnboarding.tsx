@@ -93,14 +93,27 @@ export function EditorOnboarding() {
     };
   }, [open, step]);
 
+  const guideButton = (
+    <Button ref={trigger} variant="white" size="small" svgOnly aria-label="사용법" title="사용법">
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        className="size-4"
+      >
+        <circle cx="12" cy="12" r="9" />
+        <path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 2-2.5 2-2.5 4M12 16h.01" />
+      </svg>
+    </Button>
+  );
+
   if (onboardingVariant === "overview") {
     return (
       <Modal open={open} onOpenChange={(value) => (value ? setOpen(true) : finish("skipped"))}>
-        <Modal.Trigger asChild>
-          <Button ref={trigger} variant="white">
-            사용법
-          </Button>
-        </Modal.Trigger>
+        <Modal.Trigger asChild>{guideButton}</Modal.Trigger>
         <Modal.Content
           className="max-w-190 overflow-y-auto max-[760px]:w-[calc(100%-24px)]"
           onCloseAutoFocus={(event) => {
@@ -177,11 +190,7 @@ export function EditorOnboarding() {
         } else finish("skipped");
       }}
     >
-      <Popover.Trigger asChild>
-        <Button ref={trigger} variant="white">
-          사용법
-        </Button>
-      </Popover.Trigger>
+      <Popover.Trigger asChild>{guideButton}</Popover.Trigger>
       <Popover.Anchor virtualRef={anchor} />
       {open && rect && (
         <Popover.Provider>
