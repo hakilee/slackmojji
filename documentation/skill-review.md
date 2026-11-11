@@ -1,6 +1,7 @@
-# UI implementation review — #94
+# Historical UI implementation review — #94
 
-This is the current implementation review; earlier delivery evidence remains in the corresponding GitHub issues/PRs.
+This is the historical #94 implementation review, not current product, release or device acceptance.
+Use the [current editor contract](../specs/editor.md), [quality owner](quality.md) and current issue/PR evidence.
 
 ## React best practices
 
