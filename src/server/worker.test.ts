@@ -105,7 +105,7 @@ describe("public gallery API [E6]", () => {
     }
     expect((await env.MOCHI.list()).objects).toHaveLength(0);
   }, 20000);
-  test.each(["slackmojji.haklee.me", "slackmoji.haklee.me", "mojji.haklee.me"])(
+  test.each(["slackmojji.haklee.me", "slackmoji.haklee.me", "mojji.haklee.me", "slackmochi.site"])(
     "redirects %s with path and query intact",
     async (host) => {
       const platform = await getPlatformProxy<Parameters<typeof worker.fetch>[1]>({
@@ -120,7 +120,7 @@ describe("public gallery API [E6]", () => {
       expect(response.status).toBe(308);
       expect(response.headers.get("Cache-Control")).toBe("no-store");
       expect(response.headers.get("Location")).toBe(
-        "https://slackmochi.site/api/mochi?sort=popular",
+        "https://www.slackmochi.site/api/mochi?sort=popular",
       );
       expect(await response.text()).toBe("");
     },
