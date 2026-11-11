@@ -236,7 +236,7 @@ Validate upload MIME, byte size, full GIF structure, dimensions and decoded fram
 
 ## Brand and public host
 
-- E7d (#244): Canonical public domain is slackmochi.site. Attach it as a custom domain to the existing Worker and redirect slackmojji.haklee.me, slackmoji.haklee.me and retained mojji.haklee.me directly with 308, preserving path/query/method. Keep Worker/repository/resource names, gallery data and unrelated DNS unchanged. Repository, package and Worker remain slackmojji; D1/R2 remain slackmojji-gallery. Visible Korean branding is 슬랙모찌. Browser-local settings are origin-scoped and do not migrate across domains.
+- E7e (#255): Canonical public domain is www.slackmochi.site. Attach www as a custom domain (DNS and TLS) to the existing Worker and redirect slackmochi.site, slackmojji.haklee.me, slackmoji.haklee.me and retained mojji.haklee.me directly with 308, preserving path/query/method. Keep Worker/repository/resource names, gallery data and unrelated DNS unchanged. Repository, package and Worker remain slackmojji; D1/R2 remain slackmojji-gallery. Visible Korean branding is 슬랙모찌. Browser-local settings are origin-scoped and do not migrate across domains.
 
 - E7 (#7): Use the selected C (수다모찌) text-free mochi SVG as the app symbol in the workspace header and browser favicon. Use tightly cropped logo bounds, a separate square favicon, and 2% additional inset for Apple/Android regular icons; preserve artwork proportions. Generate Apple touch (180×180) and Android manifest (192×192, 512×512, plus maskable 512×512) icons from the same source. Keep platform icon backgrounds opaque and the maskable artwork inside its central safe zone. Show 슬랙모찌 beside the workspace header symbol.
 

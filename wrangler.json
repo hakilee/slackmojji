@@ -30,6 +30,10 @@
     {
       "pattern": "slackmochi.site",
       "custom_domain": true
+    },
+    {
+      "pattern": "www.slackmochi.site",
+      "custom_domain": true
     }
   ],
   "d1_databases": [

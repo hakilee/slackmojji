@@ -2,7 +2,7 @@
 
 텍스트와 이미지를 Slack용 이모지로 편집하고, 선택한 결과를 갤러리에 공개하는 사이트입니다.
 
-[슬랙모찌 편집기 열기](https://slackmochi.site)
+[슬랙모찌 편집기 열기](https://www.slackmochi.site)
 
 ## 시작하기
 
